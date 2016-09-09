@@ -1,0 +1,623 @@
+#    -*- Mode: org -*-
+#+REVEAL_PLUGINS: notes
+#+OPTIONS: reveal_progress:t reveal_history:t reveal_control:nil org-reveal-note-key-char:e
+#+OPTIONS: reveal_mathjax:t reveal_rolling_links:t reveal_keyboard:t reveal_overview:t num:nil
+#+OPTIONS: toc:1 reveal_slide_number:h/v
+#+OPTIONS: reveal_single_file:t
+# #+OPTIONS: ':t tex:imagemagick
+#+REVEAL_HLEVEL: 1
+#+REVEAL_THEME: beige
+#+STARTUP: fnadjust
+#+PROPERTY: :header-args: :cache yes
+#+STARTUP: content
+#+STARTUP: hideblocks
+#+REVEAL_MARGIN: 0.1
+#+REVEAL_HLEVEL: 1
+# #+BABEL: :results graphics :exports results
+# #+PROPERTY: results output
+
+# hack to make standalone extra css
+# possibly move the background here
+#+begin_html
+<style media="screen" type="text/css">
+  .reveal table th, .reveal table td {
+  text-align: center;
+  border: 2px solid gray;
+  }
+  .reveal pre {
+  width:105%;
+  }
+  .footer, .push {
+  height: 2em;
+  }
+  #container {
+  position: relative;
+  }
+  #copyright {
+  position: absolute;
+  bottom: 0;
+  text-align: left;
+  font-size: medium;
+  }
+  img{border:0 !important;
+  }
+</style>
+#+end_html
+
+#+TITLE: Genome Instability and Metastatic
+#+AUTHOR: Andreas Karlsson
+#+EMAIL: andreas.a.karlsson@ki.se
+
+# #+BEGIN_SRC elisp
+#   (when (file-exists-p "readme.html") (delete-file "readme.html"))
+#   (let ((org-export-before-parsing-hook '(orcp-citeproc)))
+#     (browse-url (org-html-export-to-html)))
+# #+END_SRC
+
+* Applied example
++ Using germline mutations for biomarker development
++ Secondary prevention for prostate cancer
++ STHLM3 58,818 men recruited, 6,777 biopsies conducted
+* Today’s unstructured screening with PSA is ineffective
+#+ATTR_REVEAL: :frag (appear)
++ Over testing ::
+  + 38% of men with PSA < 1 takes a new test in 2.5 years
++ Over diagnosis ::
+  + 60% of all men biopsies are negative
+  + 50% of all cancers diagnosed are Gleason 6
++ Under treatment ::
+  + 30% of men aged 50-59 with PSA≥10 has not conducted biopsy within 2 years from PSA-testing
+  + 17% of men aged 50-69 diagnosed with advanced prostate cancer (T3/4, N1, M1, PSA>20), has had a PSA ≥ 4 six months or earlier without action taken
+* STHLM3
+#+ATTR_REVEAL: :frag (appear)
++ Objective ::
+  + Develop a new prostate cancer test that can replace PSA
++ Conditions ::
+  + Identify at least as many aggressive cancers as PSA
+  + Significantly reduce number of biopsies
+  + Demonstrate cost-effectiveness
++ Method ::
+  + Combine many existing markers
+
+* Biomarkers
++ Genetic polymorphisms ::
+  + 232 SNPs
++ Protein markers ::
+  + Total PSA
+  + Free PSA
+  + Intact PSA
+  + HK2
+  + MSMB
+  + MIC-1
++ Clinical data ::
+  + Prostate Exam
+  + Prostate volume
+  + DRE
+
+** STHLM3 panel
+| Marker            | Univariate P-value | Multivariate P-value | Saved biopsies    |
+|-------------------+--------------------+----------------------+-------------------|
+| Total PSA         |             <0.001 |                0.008 | ref               |
+| Age               |             <0.001 |               <0.001 |                   |
+| Family history    |              0.005 |                0.004 |                   |
+| Previous biopsies |             <0.001 |               <0.001 | Risk factors 5%   |
+| Genetic score     |             <0.001 |                0.006 |                   |
+| MSMB              |             <0.001 |               <0.001 |                   |
+| MIC1              |             <0.001 |                0.047 |                   |
+| Free PSA          |             <0.001 |               <0.001 |                   |
+| Intact PSA        |              0.194 |               <0.001 |                   |
+| HK2               |             <0.001 |               <0.001 | Biomarkers 27%    |
+| DRE               |             <0.001 |               <0.001 |                   |
+| Prostate volume   |             <0.001 |               <0.001 | Prostate exam 32% |
+|-------------------+--------------------+----------------------+-------------------|
+
+* HK2
+HK2 is highly expressed in several cancers, including breast cancer
+and colon cancer. Its role in coupling ATP from oxidative
+phosphorylation to the rate-limiting step of glycolysis may help drive
+the tumor cells’ growth. Notably, inhibition of HK2 has demonstrably
+improved the effectiveness of anticancer drugs.
+#+ATTR_HTML: :style width:40%; background:none; border:none; box-shadow:none;
+[[file:./HK2.png]]
+* MSMB
+Large genome-wide association studies have showed that decreased
+expression of the MSMB protein caused by the rs10993994 single
+nucleotide polymorphism is associated with an increased risk of
+developing prostate cancer (odds ratio for CT allele pair ~1.2x, and
+for TT allele pair ~1.6x when compared to the low risk CC allele
+pair).
+#+ATTR_HTML: :style width:40%; background:none; border:none; box-shadow:none;
+[[file:./MSMB.png]]
+
+# [20] A 2003 study proposed using a truncated form of the MSMB
+# protein called PSP61 as a biomarker for benign prostatic hyperplasia
+# (BPH): this study found PSP61 in the expressed prostatic secretion of
+# 10 out of ten 10 men suffering from BPH, but did not find it in 10 out
+# of 10 age-matched BPH-free men.[21] This truncated form of the MSMB
+# protein lacks the fungicidal peptide identified in 2012. The
+# expression of MSMB is found to be decreased in prostate cancer, so it
+# may be used as a biomarker for prostate cancer.[22] Urinary MSMB has
+# been found to be superior than urinary PSA at differentiating men with
+# prostate cancer at all Gleason grades.[23]
+
+* MIC-1
+Growth differentiation factor 15 (GDF15) is a protein belonging to the
+transforming growth factor beta superfamily that has a role in
+regulating inflammatory and apoptotic pathways in injured tissues and
+during disease processes. GDF15 is also known as TGF-PL, MIC-1,
+PDF, PLAB, and PTGFB. GDF15 mRNA is most abundant in the liver,
+with lower levels seen in some other tissues. Its expression in liver
+can be significantly up-regulated in during injury of organs such as
+liver, kidney, heart and lung.
+* COMMENT
+cite:gronberg_STHLM3_2015
+* COMMENT
+# * Natural history modelling for screening
+# + Natural history (NH) of disease describes the course a disease from onset
+#   to recovery or death.
+# + NH modelling grew important during the 1990's to disentangle the
+#   effects contributed by screening and improved treatment on observed
+#   reductions in cancer mortality.
+
+# ** Screening knowledge gap
+
+# #+name: motivation
+# #+header: :R-dev-args bg="transparent"
+# #+header: :imagemagick yes :iminoptions -density 200 -transparent white :imoutoptions -size 400x600
+# #+header: :exports results
+# #+header: :results graphics
+# #+header: :file (by-backend (latex "motivation.pdf") (html "motivation.png") (t "motivation.png"))
+# #+begin_src R
+#   require(ggplot2)
+
+#   ## mydata <- data.frame(measure1=c("Re-screening intervall", "Screening ages","PSA naïvity", "Biopsy compliance"),
+#   ##                      measure2=c("measure", "measure1", "measure2", "measure3"),
+#   ##                      value=c(NaN, NaN, 0.8, 1.0))
+
+#   mydata=expand.grid(measure = c("Re-screening intervall", "Screening ages","PSA naïvity", "Biopsy compliance"), level = c("low", "high"), value=NaN)
+
+#   mydata$value[mydata$measure=="PSA naïvity"]=c(0.8,1)
+
+#   ggplot(data = mydata, aes(x=measure, y=level, fill=value)) +
+#       geom_tile() +
+#       theme(panel.background = element_rect(fill = "transparent",colour = "transparent"),
+#             plot.background = element_rect(fill = "transparent",colour = "transparent"),
+#             legend.background = element_rect(fill = "transparent", colour = "transparent"))
+# #+end_src
+
+# #+NAME: fig:motivation
+# #+ATTR_HTML: :style background:none; border:none; box-shadow:none;
+# #+RESULTS: motivation
+
+
+# * Screening and Natural histories
+# #+name: life-lines
+# #+header: :file (org-babel-temp-file "./figure-" (by-backend (latex "life-lines.tikz") (html "life-lines.svg") (t "life-lines.png")))
+# #+header: :results raw file
+# #+header: :exports results
+# #+header: :packages '(("" "tikz"))
+# #+header: :imagemagick yes :iminoptions -density 200 -transparent white :imoutoptions -size 400x600
+# #+header: :fit yes :noweb yes
+# #+begin_src latex
+#   \begin{tikzpicture}[node distance=2cm]
+
+#     % Coordinates
+#     \def\xonset{3}
+#     \def\xscreen{4.5}
+#     \def\xmet{5.2}
+#     \def\xsympt{6.7}
+#     \def\xcdeath{8}
+#     \def\xodeath{9}
+#     \def\yus{3}
+#     \def\ys{4.2}
+#     \def\closetop{4.4}
+#     \def\top{5}
+#     \def\delta{0.3}
+
+
+#     % horizontal axis
+#     \draw[->] (0,0) -- (\xodeath,0) node[anchor=north] {Age (years)};
+
+#     % vertical axis
+#     \draw[->] (0,0) -- (0,1.5) node[anchor=east] {log(PSA)};
+#     % \draw[dotted] (0,0) -- (0,-1);
+
+#     % psa growth rates changes
+#     \draw[dotted] (\xonset,0) node[anchor=base, yshift=0.5cm] {\scriptsize Cancer onset} -- (\xonset,\ys);
+
+#     % psa growth rate
+#     \draw[thick] (1,0) -- (\xonset,0.1) -- (\xcdeath,1.2);
+
+#     % life-lines
+#     % ==================================================================
+
+#     % screened
+#     % ------------------------------------------------------------------
+#     \draw[line width=3pt,line join=round, line cap=round,green!50]
+#     (0,\ys) node[anchor=south east, color = black] {Screened} -- (\xonset,\ys);
+
+#     \draw[line width=3pt,line join=round, yellow!50]
+#     (\xonset,\ys) -- (\xscreen,\ys);
+
+#     \draw[line width=3pt,->,line join=round, green!50]
+#     (\xscreen,\ys) -- (\xodeath,\ys);
+
+#     % unscreened
+#     % ------------------------------------------------------------------
+#     \draw[line width=3pt,line join=round, line cap=round,green!50]
+#     (0,\yus) node[anchor=south east, color = black] {Unscreened} -- (\xonset,\yus);
+
+#     \draw[line width=3pt,line join=round, yellow!50]
+#     (\xonset,\yus) -- (\xmet,\yus);
+
+#     \draw[line width=3pt,->,line join=round, red!50]
+#     (\xmet,\yus) -- (\xcdeath,\yus);
+
+#     % timings
+#     % ==================================================================
+
+#     % birth
+#     \draw[dashed] (0,\ys) -- (0,\yus - \delta) node[anchor=north] {\scriptsize Birth};
+
+#     % onset
+#     \draw[dashed] (\xonset, \top) -- (\xonset,\ys);
+
+#     % screen Dx + Tx
+#     \draw[dashed] (\xscreen, \closetop) -- (\xscreen,\ys - \delta)
+#     node[anchor=north, text width=2.5cm] {\scriptsize Screening detected pre-clinical disease};
+
+#     % metastatic
+#     \draw[dashed] (\xmet, \yus) -- (\xmet,\yus - \delta)
+#     node[anchor=north] {\scriptsize Metastasis};
+
+#     % symptomatic disease
+#     \draw[dashed] (\xsympt, \top) -- (\xsympt,\yus - \delta)
+#     node[anchor=north, text width=1cm] {\scriptsize Symptomatic cancer};
+
+#     % cancer death
+#     \draw[dashed] (\xcdeath, \top) -- (\xcdeath, \yus - \delta)
+#     node[anchor=north west, text width=1.5cm] {\scriptsize Death from cancer};
+
+#     % other caueses
+#     \draw[dashed] (\xodeath, \top) -- (\xodeath,\ys - \delta)
+#     node[anchor=north west, text width=1.8cm] {\scriptsize Death from other causes};
+
+#     % intervals
+#     % ==================================================================
+#     \draw[<->,>=latex,thin] (\xonset, \closetop) -- (\xscreen, \closetop)
+#     node[midway, anchor=south] {\scriptsize Delay time};
+
+#     \draw[<->,>=latex,thin] (\xscreen, \closetop) -- (\xsympt, \closetop)
+#     node[midway, anchor=south] {\scriptsize Lead time};
+
+#     \draw[<->,>=latex,thin] (\xonset, \top) -- (\xsympt, \top)
+#     node[midway, anchor=south] {\scriptsize Sojourn time};
+
+#     \draw[<->,>=latex,thin] (\xcdeath, \top) -- (\xodeath, \top)
+#     node[midway, anchor=south] {\scriptsize Screening benefit};
+
+#   \end{tikzpicture}
+# #+end_src
+
+# #+name: fig:life-lines
+# #+ATTR_HTML: :style background:none; border:none; box-shadow:none;
+# #+RESULTS: life-lines
+
+# #+BEGIN_NOTES
+#   Enter speaker notes here.
+# #+END_NOTES
+# * Modelled states
+# #+NAME: states
+# #+header: :file (org-babel-temp-file "./figure-" (by-backend (latex "states.tikz") (html "states.svg") (t "states.png")))
+# #+header: :results raw file
+# #+header: :exports results
+# #+header: :packages '(("" "tikz"))
+# #+header: :imagemagick yes :iminoptions -density 200 -transparent white :imoutoptions -size 400x800
+# #+header: :fit yes :noweb yes
+# #+begin_src latex
+#   \usetikzlibrary{shapes.multipart}
+#   \pgfdeclarelayer{background}
+#   \pgfdeclarelayer{foreground}
+#   \pgfsetlayers{background,main,foreground}
+
+#   \tikzstyle{block} = [top color=white, bottom color=gray!60,
+#   draw=gray!40!black!100, text width=2.2cm, text centered,
+#   rounded corners, minimum height=0.75cm]
+
+#   \tikzstyle{longBlock} = [rectangle, draw, fill=black!10,
+#   draw=black!10, text width=10cm, text centered, rounded corners,
+#   minimum height=0.5cm, minimum width=13.5cm]
+
+#   \tikzstyle{bigTransBlock} = [rectangle, draw, opacity=.4,
+#   fill=gray!20, text centered, text depth=1, rounded
+#   corners, minimum height=7.6cm, minimum width=6.5cm, yshift=0.05cm]
+
+#   \begin{tikzpicture}[node distance=2.5cm and 3cm,
+#     scale=0.8, every node/.style={scale=0.8}]
+
+#     % Coordinates
+#     \coordinate (preClin) at (5.7,-4.5); %long blocks
+#     \coordinate (clin) at ([xshift=5.25cm]preClin); %long blocks
+#     \coordinate (distPreC) at (7.5,-2.75);
+#     \coordinate (otherCause) at (5.6,-8.8);
+
+
+#     % Nodes clin & preclin
+#     \node [bigTransBlock] at (preClin){};
+#     \node at ([yshift=3.64cm]preClin) {Preclinical};
+#     \node [bigTransBlock, minimum width=2.8cm] at (clin){};
+#     \node at ([yshift=3.64cm]clin){Clinical};
+
+#     \begin{pgfonlayer}{foreground}
+#       % Nodes preclinical stages & healthy
+#       \node [block, bottom color=black!10] at (0,-1.5)
+#       (healthy) {Healthy};
+#       \node [block, right of = healthy, node distance=4cm, bottom color=gray!20]
+#       (loc26){Local-regional Gleason 2-6};
+#       \node [block, below of = loc26, bottom color=gray!30]
+#       (loc7){Local-regional Gleason 7};
+#       \node [block, below of = loc7, bottom color=gray!40]
+#       (loc810){Local-regional Gleason 8-10};
+#       \node [block, bottom color=gray!50] at (distPreC)
+#       (dist26){Distant stage Gleason 2-6};
+#       \node [block, below of = dist26, bottom color=gray!60]
+#       (dist7){Distant stage Gleason 7};
+#       \node [block, below of = dist7, bottom color=gray!70]
+#       (dist810){Distant stage Gleason 8-10};
+
+#       % Nodes clinical stages
+#       \node [block, bottom color=gray!20] (loc26Cl) at
+#       ([xshift=7cm]loc26){Local-regional Gleason 2-6};
+#       \node [block, bottom color=gray!50] (dist26Cl) at
+#       ([yshift=-1.25cm]loc26Cl){Distant stage Gleason 2-6};
+#       \node [block, below of = loc26Cl, bottom color=gray!30]
+#       (loc7Cl) {Local-regional Gleason 7};
+#       \node [block, below of = dist26Cl, bottom color=gray!60]
+#       (dist7Cl) {Distant stage Gleason 7};
+#       \node [block, below of = loc7Cl, bottom color=gray!40]
+#       (loc810Cl) {Local-regional Gleason 8-10};
+#       \node [block, below of = dist7Cl, bottom color=gray!70]
+#       (dist810Cl) {Distant stage Gleason 8-10};
+
+#       % other-cause mortality
+#       \node [longBlock] at (otherCause) (other)
+#       {Other--cause mortality};
+
+#       % Draw edges
+#       \draw [->,>=stealth] (healthy) -- (loc26);
+#       \draw [->,>=stealth] (healthy.east) --  ++(0.6,0) |- (loc7.west);
+#       \draw [->,>=stealth] (healthy.east) --  ++(0.6,0) |- (loc810.west);
+#       \draw [->,>=stealth] (loc26) -- (loc26Cl);
+#       \draw [->,>=stealth] (loc7) -- (loc7Cl);
+#       \draw [->,>=stealth] (loc810) -- (loc810Cl);
+#       \draw [->,>=stealth] (loc26.east) --  ++(0.6,0) |- (dist26.west);
+#       \draw [->,>=stealth] (loc7.east) --  ++(0.6,0) |- (dist7.west);
+#       \draw [->,>=stealth] (loc810.east) --  ++(0.6,0) |- (dist810.west);
+#       \draw [->,>=stealth] (dist26) -- (dist26Cl);
+#       \draw [->,>=stealth] (dist7) -- (dist7Cl);
+#       \draw [->,>=stealth] (dist810) -- (dist810Cl);
+#     \end{pgfonlayer}
+
+#     \begin{pgfonlayer}{background}
+
+#       \draw [line width = 3pt, color = black!10] (healthy) to (healthy|-other);
+
+#       % Preclinical local
+#       \draw [line width = 3pt, color = black!10] (loc26.180+45*1) to (loc26.180+45*1 |- other.north);
+#       \draw [line width = 3pt, color = black!10] (loc7.180+45*2) to (loc7.180+45*2 |- other);
+#       \draw [line width = 3pt, color = black!10] (loc810.180+45*3) to (loc810.180+45*3 |- other);
+#       % Preclinical distant
+#       \draw [line width = 3pt, color = black!10] (dist26.180+45*1) to (dist26.180+45*1 |- other);
+#       \draw [line width = 3pt, color = black!10] (dist7.180+45*2) to (dist7.180+45*2 |- other);
+#       \draw [line width = 3pt, color = black!10] (dist810.180+45*3) to (dist810.180+45*3 |- other);
+#       % Clinical local
+#       \draw [line width = 3pt, color = black!10] (loc26Cl.180+180*1.5/7) to (loc26Cl.180+180*1.5/7 |- other.north);
+#       \draw [line width = 3pt, color = black!10] (loc7Cl.180+180*2.9/7) to (loc7Cl.180+180*2.9/7 |- other);
+#       \draw [line width = 3pt, color = black!10] (loc810Cl.180+180*4.95/7) to (loc810Cl.180+180*4.95/7 |- other);
+#       % Clinical distant
+#       \draw [line width = 3pt, color = black!10] (dist26Cl.180+180*2/7) to (dist26Cl.180+180*2/7 |- other);
+#       \draw [line width = 3pt, color = black!10] (dist7Cl.180+180*4.1/7) to (dist7Cl.180+180*4.1/7 |- other);
+#       \draw [line width = 3pt, color = black!10] (dist810Cl.180+180*5.5/7) to (dist810Cl.180+180*5.5/7 |- other);
+#     \end{pgfonlayer}
+#   \end{tikzpicture}
+# #+END_SRC
+
+# #+NAME: fig:states
+# #+ATTR_HTML: :style background:none; border:none; box-shadow:none; width:90%;
+# #+RESULTS: states
+
+# ** Adaption to Swedish population
+# *** Swedish survival data localised
+# #+NAME: surv-adj-loc-reg
+# #+BEGIN_SRC R :results value :colnames yes :exports results
+#   require(microsimulation)
+#   microsimulation:::FhcrcParameters$hr_locoregional
+# #+END_SRC
+
+# #+ATTR_HTML: :height 100%
+# #+RESULTS: surv-adj-loc-reg
+# | age | ext_grade | psa10 |        hr |
+# |-----+-----------+-------+-----------|
+# |  50 |         0 |     0 | 0.4852788 |
+# |  60 |         0 |     0 | 0.7309101 |
+# |  70 |         0 |     0 | 1.5703646 |
+# |  50 |         1 |     0 | 3.1780491 |
+# |  60 |         1 |     0 | 2.2476271 |
+# |  70 |         1 |     0 | 3.1391895 |
+# |  50 |         2 |     0 | 1.2743633 |
+# |  60 |         2 |     0 | 0.9972281 |
+# |  70 |         2 |     0 |  1.259677 |
+# |  50 |         0 |     1 | 1.0367029 |
+# |  60 |         0 |     1 | 0.9528743 |
+# |  70 |         0 |     1 | 1.3431982 |
+# |  50 |         1 |     1 | 7.3491808 |
+# |  60 |         1 |     1 | 3.4922388 |
+# |  70 |         1 |     1 | 2.8214167 |
+# |  50 |         2 |     1 | 0.7880672 |
+# |  60 |         2 |     1 | 0.7624732 |
+# |  70 |         2 |     1 | 0.7827559 |
+
+# *** Swedish survival data metastatic
+# #+NAME: surv-adj-met
+# #+BEGIN_SRC R :results value :colnames yes :exports results
+#   microsimulation:::FhcrcParameters$hr_metastatic
+# #+END_SRC
+
+# #+ATTR_HTML: :height 100%
+# #+RESULTS: surv-adj-met
+# | age |        hr |
+# |-----+-----------|
+# |  50 | 0.8325735 |
+# |  60 | 0.9403021 |
+# |  70 | 0.7998358 |
+
+
+
+# *** Observed compliance from STHLM0 by psa and age from STHLM0.
+
+# #+NAME: sthlm0-biop-comp
+# #+BEGIN_SRC R :results value :colnames yes :exports results
+#   microsimulation:::swedenOpportunisticBiopsyCompliance
+# #+END_SRC
+
+# #+RESULTS: sthlm0-biop-comp
+# | psa | age | compliance |
+# |-----+-----+------------|
+# |   3 |  40 |  0.3764045 |
+# |   5 |  40 |  0.5680751 |
+# |  10 |  40 |  0.7727273 |
+# |   3 |  50 |   0.311077 |
+# |   5 |  50 |  0.5726548 |
+# |  10 |  50 |  0.7537372 |
+# |   3 |  60 |  0.2385155 |
+# |   5 |  60 |  0.4814588 |
+# |  10 |  60 |   0.692977 |
+# |   3 |  70 |  0.1754264 |
+# |   5 |  70 |  0.3685056 |
+# |  10 |  70 |   0.560203 |
+# |   3 |  80 |  0.1629213 |
+# |   5 |  80 |  0.2697368 |
+# |  10 |  80 |  0.5010052 |
+
+# * Study 1 - accepted
+# [[file:images/submitted_study1.png]]
+
+# ** Iframe
+
+
+# * Study 2
+# ** Organised screening paper                                       :EPI:CEA:
+# Answering current question on organising screening
+# * Study 3
+# ** Organised screening paper                                       :EPI:CEA:
+# Answering current question on organising screening
+# * Study 4
+# ** Calibration paper (c.f. sequential)
+# + formal calibration
+# + sensitivity (PSA)
+# + Literature: (1) Klevmark Uppsala microsimulation SESIM (2) Nocedal
+# and Wright Optimisation PDF Book
+# * Extras
+# ** PSA-uptake                                                      :mention:
+# PSA utake rates, compare Skåne paper. Possibly also the small area
+# analysis
+# ** Web-tool                                                        :mention:
+# + openCPU
+# + JS
+# ** Position paper 1                                                :mention:
+# Broad: data integration, bioinformatics and natural-history
+# ** Position paper 2
+# Comparison of natural-history models
+# ** Icelandic screening paper
+# + cite:rcpp
+# + hej
+
+
+* COMMENT Thank you for listening!
+
+bibliography:../references_hb.bib
+* COMMENT
+** Motivation
+#+ATTR_REVEAL: :frag (appear)
+- Why use version control (vc)?
+  + reproducible research
+- Why use a software for vc?
+  + a log book closely linked to your code
+  + saves time in the long run
+  + serenity now
+- Why use git?
+  + no server needed
+  + widely adopted
+  + lots of linked services
+
+# * Naming conventions
+# #+attr_html: :style width:70%;
+# file:phd052810s.png
+
+** Local vs collaborative
+#+ATTR_REVEAL: :frag (appear)
+- local version control - really simple
+  + opinion: worth while for all biostatisticians
+  + focus of this presentation
+- collaboration - requires /communication/ & infrastructure
+  + show some possibilities - no details
+  + focus of other presentation
+** What does git do?
+- controls different versions of files
+- store changes not whole files
+- tracks the change's: order, time point and author
+- generally only one version in the working directory
+- "undo" for your project
+#+begin_html
+<div class="push"></div>
+<div class="push"></div>
+<div id="container">
+  <div id="copyright">
+    <hr></hr>
+    <a href="http://git-scm.com/doc"> http://git-scm.com/doc </a> <br>
+    <a href="http://juristr.com/blog/2013/04/git-explained/"> http://juristr.com/blog/2013/04/git-explained/ </a> <br>
+  </div>
+</div>
+#+end_html
+
+** Lingo
+# #+attr_html: :style float:left;width:48%;margin:0.1ex 0.1ex
+# [[file:git-tree.png]]
+#+ATTR_REVEAL: :frag (appear)
+- repository
+- commit
+- branch
+- HEAD
+#+html: <br style="clear:both;" />
+
+** How to work with git
+# #+attr_html: :style float:left;width:20%;margin:0.5ex
+# [[file:Git-Logo-1788C.png]]
+#+ATTR_REVEAL: :frag (grow none none none none) :frag_idx (1 - - - -)
++ CLI - focus of examples today
++ Git-Gui - other presentation
++ Rstudio
++ Magit Emacs
++ Web
+#+begin_html
+<div class="push"></div>
+<div class="push"></div>
+<div id="container">
+  <div id="copyright">
+    <hr></hr>
+    <a href="https://git-scm.com/downloads/guis"> https://git-scm.com/downloads/guis </a> <br>
+    <a href="http://r-pkgs.had.co.nz/git.html"> http://r-pkgs.had.co.nz/git.html </a>
+  </div>
+</div>
+#+end_html
+
+# Local Variables:
+# org-export-allow-bind-keywords: t
+# org-confirm-babel-evaluate: nil
+# eval: (defmacro by-backend (&rest body)
+#           `(case org-export-current-backend ,@body))
+# eval: (use-package ox-reveal
+#         :ensure t
+#         :config
+#         (setq org-reveal-root "../.reveal.js"))
+# End:
