@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
-<title>Half-time seminar</title>
+<title>Microsimulation modelling of prostate cancer screening in Sweden: an eScience approach to epidemiology</title>
 <meta name="author" content="(Andreas Karlsson)"/>
 <style type="text/css">
 .underline { text-decoration: underline; }
@@ -1636,12 +1636,16 @@ body {
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide" data-background="../logos/background_logos.png" data-background-size="1280px"><h2>Half-time seminar</h2><h3>Andreas Karlsson</h3><a href="mailto:andreas.a.karlsson@ki.se">andreas.a.karlsson@ki.se</a><br>2016-09-23,&nbsp;Karolinska&nbsp;Institutet<br><br>Supervised&nbsp;by:<br>Mark&nbsp;Clements,&nbsp;Erwin&nbsp;Laure,&nbsp;<br>Alexandra&nbsp;Jauhiainen&nbsp;&&nbsp;Henrik&nbsp;Grönberg
+<section id="sec-title-slide" data-background="../logos/background_logos.png" data-background-size="1280px"><h3>Half-time&nbspseminar</h3><b>Microsimulation modelling of prostate cancer screening in Sweden: an eScience approach to epidemiology</b><br>2016-09-23,&nbsp;Karolinska&nbsp;Institutet<p><b>Andreas Karlsson</b><br><a href="mailto:andreas.a.karlsson@ki.se">andreas.a.karlsson@ki.se</a></p><p>Supervised&nbsp;by:<br>Mark&nbsp;Clements,&nbsp;Erwin&nbsp;Laure,&nbsp;<br>Alexandra&nbsp;Jauhiainen&nbsp;&&nbsp;Henrik&nbsp;Grönberg</p>
 </section>
 <style media="screen" type="text/css">
   .reveal table th, .reveal table td {
-  text-align: center;
+  border-collapse: collapse;
+  text-align: left;
   border: 2px solid gray;
+  }
+  tr:last-child {
+  border-bottom: 2px solid gray;
   }
   .reveal pre {
   width:105%;
@@ -1658,23 +1662,30 @@ body {
   text-align: left;
   font-size: medium;
   }
-  #bibliography {
+  #normal {
+  font-size: 12px;
+  font-size: 3vh;
+  }
+  #small {
   font-size: 8px;
   font-size: 2vh;
+  }
+  #tiny {
+  font-size: 6px;
+  font-size: 1vh;
   }
   img{border:0 !important;
   }
 </style>
 
 <section>
-<section id="slide-orgheadline9">
-<h2 id="orgheadline9">Introduction</h2>
+<section id="slide-orgheadline8">
+<h2 id="orgheadline8">Introduction</h2>
 <aside class="notes">
 <ul>
-<li>Prostate cancer has the highest incidence and mortality of all
-cancers among men in Sweden.</li>
-<li>The incidence in Sweden is comparable with contries who has been
-testing with PSA for a long time.</li>
+<li>PCa has the highest incidence and mort of all Ca in Swe males.</li>
+<li>Incidence in Swe is comparable with contries using PSA testing for
+a long time, Swe still has a comparably high mortality.</li>
 
 </ul>
 
@@ -1683,11 +1694,10 @@ testing with PSA for a long time.</li>
 <ul style="float:left;width:75%;margin:0.1ex 0.1ex">
 <li>Prostate cancer is the most common cancer diagnosis and the most
 common cause of cancer death in Swedish males.*</li>
-<li>Prostate cancer incidence rates in Sweden are now comparable to
-rates in countries that had an early introduction of
-prostate-specific antigen (PSA) testing, while prostate cancer
-mortality rates in Sweden are higher than in most other
-<span style="white-space: nowrap"> countries.<font size='4'><sup><a href="#bray_prostate_2010">1</a></sup></font></span></li>
+<li>Prostate cancer incidence rates in Sweden are similar to other
+countries with frequent prostate-specific antigen (PSA) testing,
+while Swedish prostate cancer mortality rates are
+<span style="white-space: nowrap">high.<font size='4'><sup><a href="#bray_prostate_2010">1</a></sup></font></span></li>
 
 </ul>
 
@@ -3442,7 +3452,7 @@ QloQloQloQv/2Q==" style="float:right;width:20%;margin:0.1ex 0.1ex" />
 <h3 id="orgheadline1">Today’s unstructured screening with PSA is ineffective</h3>
 <aside class="notes">
 <ul>
-<li>Todays PSA testing is inefficient
+<li>Todays unstructured PSA testing is inefficient
 <ul>
 <li>There is to much testing of low risk men</li>
 <li>&#x2026;too many biopsies of benin and low grade cancers</li>
@@ -3456,7 +3466,7 @@ QloQloQloQv/2Q==" style="float:right;width:20%;margin:0.1ex 0.1ex" />
 
 <dl>
 <dt>Over testing</dt><dd><ul>
-<li>38% of men with PSA &lt; 1 takes a new test in 2.5 <span style="white-space: nowrap"> years <font size='4'><sup><a href="#nordstrom_prostate-specific_2013">2</a></sup></font></span></li>
+<li>38% of men with PSA &lt; 1 have a new test within 2.5 <span style="white-space: nowrap"> years <font size='4'><sup><a href="#nordstrom_prostate-specific_2013">2</a></sup></font></span></li>
 
 </ul></dd>
 <dt>Over diagnosis</dt><dd><ul>
@@ -3466,11 +3476,10 @@ QloQloQloQv/2Q==" style="float:right;width:20%;margin:0.1ex 0.1ex" />
 
 </ul></dd>
 <dt>Under treatment</dt><dd><ul>
-<li>30% of men aged 50-59 with PSA≥10 has not conducted biopsy within
-2 years from PSA-testing</li>
-<li>17% of men aged 50-69 diagnosed with advanced prostate cancer
-(T3/4, N1, M1, PSA&gt;20), has had a PSA ≥ 4 six months or earlier
-without action taken</li>
+<li>30% of men aged 50&#x2013;59 with PSA≥10 ng/ml do not have a biopsy within
+2 years</li>
+<li>17% of men aged 50&#x2013;69 diagnosed with advanced prostate cancer
+had PSA≥4 ng/ml six months or earlier with no action</li>
 
 </ul></dd>
 
@@ -3479,16 +3488,17 @@ without action taken</li>
 </section>
 </section>
 <section>
-<section id="slide-orgheadline2">
-<h3 id="orgheadline2">Trials of Prostate Cancer screening</h3>
+<section id="slide-orgheadline3">
+<h3 id="orgheadline3">Prostate cancer screening trials</h3>
 <aside class="notes">
 <ul>
 <li>Two large clinical trials
 <ul>
-<li>where the European - ERSPC - showed a decrease in mortality rate
-ratio of <b>0.73</b></li>
-<li>and it's American counter part without any screening effect</li>
-<li>It is belivied that the lack of effect was due high PSA testing
+<li>where the European -ERSPC- showed a decrease in 27% mortality
+reduction</li>
+<li>in the American counterpart -PLCO- screening had no effect on
+mortality</li>
+<li>It is believed that the lack of effect was due high PSA testing
 in the control arm</li>
 
 </ul></li>
@@ -3502,19 +3512,25 @@ in the control arm</li>
 (ERSPC) found a prostate cancer mortality rate ratio of 0.73 (95% CI
 0.61–0.88) after 13 years of <span style="white-space: nowrap">
 follow-up.<font size='4'><sup><a href="#schroder_screening_2014">4</a></sup></font></span></li>
-<li>In contrast the Prostate, Lung, Colorectal and Ovarian (PLCO) Cancer Screening Trial in the United States indicate that organised PSA testing has little effect on prostate cancer
-<span style="white-space: nowrap"> mortality.<font size='4'><sup><a href="#andriole_prostate_2012">5</a></sup></font></span></li>
-<li>Control contamination is only one of the many parameters affect prostate
-cancer testing.</li>
+<li>In contrast, the Prostate, Lung, Colorectal and Ovarian (PLCO) trial
+in the US indicated that organised PSA testing has little effect on
+prostate cancer <span style="white-space: nowrap"> mortality (due to control contamination).<font size='4'><sup><a href="#andriole_prostate_2012">5</a></sup></font></span></li>
+<li>Many parameters affect the effectiveness of prostate cancer
+screening, including screening history.</li>
 
 </ul>
 
 
 </section>
-</section>
-<section>
-<section id="slide-orgheadline3">
-<h3 id="orgheadline3">Extrapolation from RCTs to policy</h3>
+<section id="slide-orgheadline2">
+<h4 id="orgheadline2">From randomised controlled trials (RCTs) to policy</h4>
+<aside class="notes">
+<p>
+
+</p>
+
+</aside>
+
 <ul>
 <li>RCTs are the gold standard for evidence on the effects of
 interventions</li>
@@ -3523,8 +3539,8 @@ forms of intervention and may offer limited evidence on longer-term
 effects</li>
 <li>How can we extrapolate from RCTs to other interventions and
 longer-term outcomes?</li>
-<li data-fragment-index="1" class="fragment appear"><b>Either:</b> Use the observed RCT evidence and expert judgement</li>
-<li data-fragment-index="2" class="fragment appear"><b>Or:</b> Simulate for the natural history.</li>
+<li data-fragment-index="1" class="fragment appear"><b>Either:</b> Use the observed RCTs with expert judgement</li>
+<li data-fragment-index="2" class="fragment appear"><b>Or:</b> Simulate for interventions using a natural history model.</li>
 
 </ul>
 
@@ -3532,22 +3548,23 @@ longer-term outcomes?</li>
 </section>
 <section>
 <section id="slide-orgheadline4">
-<h3 id="orgheadline4">Research question</h3>
+<h3 id="orgheadline4">Natural history modelling</h3>
+<aside class="notes">
 <p>
-<b>How should we plan for better prostate cancer screening?</b>
+
 </p>
 
+</aside>
+
 <ul>
-<li>Parameters affecting screening include:
+<li>Natural history (NH) modelling describes the course from disease onset
+to recovery or death. The modelling is motivated by
+biological mechanisms.</li>
+<li><b>Natural history modelling can be used to:</b>
 <ul>
-<li>Test characteristics for different tests (e.g. PSA, S3M, 4K and PHI)</li>
-<li>Screening ages</li>
-<li>Re-screening intervals</li>
-<li>Screening history</li>
-<li>Screening test compliance (if invitations are organised)</li>
-<li>Biopsy compliance</li>
-<li>Treatment effectiveness</li>
-<li>etc&#x2026;</li>
+<li>to generalise results from RCTs</li>
+<li>predict effects for changing RCT protocols</li>
+<li>calculate cost-effectiveness using predicted lifetime costs and quality of life</li>
 
 </ul></li>
 
@@ -3557,28 +3574,15 @@ longer-term outcomes?</li>
 </section>
 <section>
 <section id="slide-orgheadline5">
-<h3 id="orgheadline5">Natural History modelling</h3>
-<ul>
-<li>Natural history (NH) of disease describes the course a disease from onset
-to recovery or death.</li>
-<li>NH modelling grew important during the 1990's to disentangle the
-effects contributed by screening and improved treatment on observed
-reductions in cancer mortality.</li>
-<li data-fragment-index="1" class="fragment appear"><b>NH modelling can be used to:</b>
-<ul>
-<li>to generalise results from RCTs</li>
-<li>predict effects for changing RCT protocol</li>
-<li>cost-effectiveness analysis by amending costs and quality of life</li>
+<h3 id="orgheadline5">Screening and natural histories: stochastic life-lines (microsimulation)</h3>
+<aside class="notes">
+<p>
+Emphasise that this can be done since it is a simulated data,
+otherwise it would not be observable.
+</p>
 
-</ul></li>
+</aside>
 
-</ul>
-
-</section>
-</section>
-<section>
-<section id="slide-orgheadline6">
-<h3 id="orgheadline6">Screening and Natural histories</h3>
 
 <div id="orgparagraph1" class="figure">
 <p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABAkAAAHfCAMAAAAFhnEmAAAJJGlDQ1BpY2MAAHjalZVnUJNZF8fv
@@ -3631,7 +3635,7 @@ TP9/f/9/fwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAH//f//3mTt3O3dzRyJEIm7dbl27Xf9/f0yZTLtdXbu1cHc7O////xGQf9QAAABRdFJOUwAz
 mYhm3SLuzHdEEVW7qqfftMd1zUTBzmbu3TMiiFWqEZm7zHfHx92Ix+On52aqu4gRzCJE7pndM5/F
 j5ent3e31o7j+uzo2si/8ffXn4/n4SAN8EsAAAABYktHRACIBR1IAAAACXBIWXMAAADIAAAAyABj
-+uetAAAAB3RJTUUH4AkTFDoifsq/EwAAMRZJREFUeNrtnQm7hLp535EESCCkuGncervxvbHTpkvs
++uetAAAAB3RJTUUH4AkVFhwhAvLmPwAAMRZJREFUeNrtnQm7hLp535EESCCkuGncervxvbHTpkvs
 aydO3L1J67TprpulvV2+/9eoXi0gZubMmR0Y/r/nOXMYEKDR8kd69SJVFQAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAIB9wrjw1M3h/laqO6/cStku/euuo/ZpwTshbvy5FyQYl+6aa/Yhc/TS6QJ2
 wKConGl1VEDvUQITr9BsTAkEp8/aPVEJKnGNEtSNz5xBduGLWTp5wFvTDOFfe9Wj6hPYNgtt6+LD
@@ -3852,138 +3856,58 @@ JjTZhFgrZcyhtWD+BpKZKnNtmmRk0J0Y+r6vtDVCC/JGNqE1IHjNheBZSjq8gQTACtGKx6rZKvfx
 krv1zOfwnheLLd5KBmCFTDMPtGd68FoWx/o7Zi3BTCUArJJpgFCfm74kzV4myPdA3NG+7zB7GQBr
 pB1HArk8N6WZCo0C8iVidxj/dYMZTQFYJX1jBl3pwTTsXDAWDgtV9fzCC58Cs5wDsFoGYYwRn/Xf
 48onvbhnyqEefQMAts4DVkN7wDJKAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAcDP/H9QXf6/U
-RSUPAAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDE2LTA5LTE5VDIyOjU4OjM0KzAyOjAwv20rJAAAACV0
-RVh0ZGF0ZTptb2RpZnkAMjAxNi0wOS0xOVQyMjo1ODozNCswMjowMM4wk5gAAAAUdEVYdHBkZjpW
+RSUPAAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDE2LTA5LTIyVDAwOjI4OjMzKzAyOjAw24IB9gAAACV0
+RVh0ZGF0ZTptb2RpZnkAMjAxNi0wOS0yMlQwMDoyODozMyswMjowMKrfuUoAAAAUdEVYdHBkZjpW
 ZXJzaW9uAFBERi0xLjUgBVwLOQAAAABJRU5ErkJggg==" style="background:none; border:none; box-shadow:none;" />
 </p>
 </div>
+
+
+</section>
+</section>
+<section>
+<section id="slide-orgheadline6">
+<h3 id="orgheadline6">Research question: How should we plan for better prostate cancer testing?</h3>
+<aside class="notes">
+<p>
+
+</p>
+
+</aside>
+
+<p>
+Parameters affecting screening include:
+</p>
+<ul>
+<li>Test characteristics for different tests (e.g. PSA, S3M, 4K and PHI)</li>
+<li>Screening ages</li>
+<li>Re-screening intervals</li>
+<li>Screening history</li>
+<li>Screening test compliance (if invitations are organised)</li>
+<li>Biopsy compliance</li>
+<li>Treatment effectiveness</li>
+<li>etc&#x2026;</li>
+
+</ul>
 
 </section>
 </section>
 <section>
 <section id="slide-orgheadline7">
-<h3 id="orgheadline7">Data Sources</h3>
-<div id="bibliography">
-<!-- This HTML table template is generated by emacs 24.5.1 -->
-<table border="1">
-  <tr>
-    <td align="left" valign="top">
-      &nbsp;Study&nbsp;name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    </td>
-    <td align="left" valign="top">
-      Description&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    </td>
-    <td align="left" valign="top">
-      &nbsp;Study&nbsp;size&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    </td>
-  </tr>
-  <tr>
-    <td align="left" valign="top">
-      &nbsp;Stockholm-0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    </td>
-    <td align="left" valign="top">
-      Population&nbsp;of&nbsp;men&nbsp;with&nbsp;a&nbsp;PSA&nbsp;test&nbsp;in&nbsp;Stockholm&nbsp;&nbsp;&nbsp;<br />
-      from&nbsp;2003.&nbsp;Linked&nbsp;with&nbsp;registrations,&nbsp;deaths,&nbsp;&nbsp;&nbsp;&nbsp;<br />
-      migration,&nbsp;prescribed&nbsp;drugs&nbsp;etc.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    </td>
-    <td align="left" valign="top">
-      &nbsp;400,000&nbsp;men&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    </td>
-  </tr>
-  <tr>
-    <td align="left" valign="top">
-      &nbsp;Stockholm-3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    </td>
-    <td align="left" valign="top">
-      Clinical&nbsp;study&nbsp;of&nbsp;prostate&nbsp;cancer&nbsp;screening&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
-      protocol&nbsp;and&nbsp;biomarker&nbsp;development&nbsp;in&nbsp;2013--2014.
-    </td>
-    <td align="left" valign="top">
-      &nbsp;60,000&nbsp;men&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    </td>
-  </tr>
-  <tr>
-    <td align="left" valign="top">
-      &nbsp;PcBaSe&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    </td>
-    <td align="left" valign="top">
-      Survival&nbsp;at&nbsp;10&nbsp;years&nbsp;by&nbsp;PSA,&nbsp;grade&nbsp;and&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
-      stage.&nbsp;PcBaSe&nbsp;links&nbsp;the&nbsp;national&nbsp;quality&nbsp;register<br />
-      on&nbsp;prostate&nbsp;cancer&nbsp;with&nbsp;the&nbsp;cause&nbsp;of&nbsp;death&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
-      register.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    </td>
-    <td align="left" valign="top">
-      &nbsp;80,000&nbsp;cases&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    </td>
-  </tr>
-  <tr>
-    <td align="left" valign="top">
-      &nbsp;Life-tables&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    </td>
-    <td align="left" valign="top">
-      Life-tables&nbsp;by&nbsp;age&nbsp;and&nbsp;calendar&nbsp;year&nbsp;from&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
-      Statistics&nbsp;Sweden.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    </td>
-    <td align="left" valign="top">
-      &nbsp;Sweden,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
-      &nbsp;Stockholm&nbsp;county&nbsp;
-    </td>
-  </tr>
-  <tr>
-    <td align="left" valign="top">
-      &nbsp;Prostate&nbsp;cancer&nbsp;incidence&nbsp;<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    </td>
-    <td align="left" valign="top">
-      Prostate&nbsp;cancer&nbsp;incidence&nbsp;by&nbsp;age&nbsp;and&nbsp;calendar&nbsp;&nbsp;&nbsp;&nbsp;<br />
-      year&nbsp;from&nbsp;Socialstyrelsen.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    </td>
-    <td align="left" valign="top">
-      &nbsp;Sweden,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
-      &nbsp;Stockholm&nbsp;county&nbsp;
-    </td>
-  </tr>
-  <tr>
-    <td align="left" valign="top">
-      &nbsp;Prostate&nbsp;cancer&nbsp;mortality&nbsp;<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    </td>
-    <td align="left" valign="top">
-      Prostate&nbsp;cancer&nbsp;mortality&nbsp;by&nbsp;age&nbsp;and&nbsp;calendar&nbsp;&nbsp;&nbsp;&nbsp;<br />
-      year&nbsp;from&nbsp;Socialstyrelsen.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    </td>
-    <td align="left" valign="top">
-      &nbsp;Sweden,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
-      &nbsp;Stockholm&nbsp;county&nbsp;
-    </td>
-  </tr>
-</table>
-</div>
+<h3 id="orgheadline7">Studies</h3>
+<aside class="notes">
+<p>
 
-</section>
-</section>
-<section>
-<section id="slide-orgheadline8">
-<h3 id="orgheadline8">Studies</h3>
+</p>
+
+</aside>
+
 <ol>
 <li>Accepted: <i>A parallel microsimulation package for modelling cancer screening policies.</i></li>
-<li>Draft: <i>Is organised prostate cancer testing cost-effective in Sweden?</i></li>
-<li>Outdated draft: <i>Cost-effectiveness of prostate cancer screening: evidence for the STHLM3 biomarker panel and organised testing.</i></li>
-<li><i>Calibration of a prostate cancer natural history microsimulation model using approximate Bayesian computation.</i></li>
-<li><i>Develop a browser-based tool for allowing health-care decision
+<li>Draft: <i>Would organised prostate cancer testing be cost-effective in Sweden?</i></li>
+<li>Draft: <i>Cost-effectiveness of prostate cancer screening: evidence for the STHLM3 biomarker panel and organised testing.</i></li>
+<li>In planning: <i>Calibration of a prostate cancer natural history microsimulation model using approximate Bayesian computation.</i></li>
+<li>Prototype: <i>Develop a browser-based tool for allowing health-care decision
 makers to investigate different prostate cancer screening
 scenarios.</i></li>
 
@@ -3991,8 +3915,8 @@ scenarios.</i></li>
 </section>
 </section>
 <section>
-<section id="slide-orgheadline25">
-<h2 id="orgheadline25">Study 1</h2>
+<section id="slide-orgheadline23">
+<h2 id="orgheadline23">Study 1</h2>
 
 <div class="figure">
 <p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA7AAAAIACAYAAAC7AIADAAAABmJLR0QA/wD/AP+gvaeTAAAACXBI
@@ -6228,30 +6152,37 @@ pQufe+45rly50q54MdfJqVOnJGNCDObxKhaDiYmJ7N69OwHw008/FYp1OeL3MqTx/wA5oFnUaq+L
 </section>
 </section>
 <section>
-<section id="slide-orgheadline10">
-<h3 id="orgheadline10">Background</h3>
+<section id="slide-orgheadline9">
+<h3 id="orgheadline9">Background</h3>
+<aside class="notes">
+<ul>
+<li>computationally intensive to run the simulation with high precision</li>
+<li>it is also computationally intensive to calibrate the model</li>
+
+</ul>
+
+</aside>
+
 <p>
-Microsimulations representing stochasticity are inherently
-computationally intensive and computational efficiency is needed to
-allow for model precision, particularly to perform model calibrations
-within a reasonable time frame.
+Microsimulations are
+computationally intensive, particularly for model calibrations.
 </p>
 </section>
 </section>
 <section>
-<section id="slide-orgheadline13">
-<h3 id="orgheadline13">Aims</h3>
+<section id="slide-orgheadline12">
+<h3 id="orgheadline12">Aims</h3>
 <ul>
-<li>To describe the design choices in our parallel discrete-event
-microsimulation R-package.</li>
-<li>To provide an R-package for microsimulation which is fast, light
+<li>To provide an R package for microsimulation which is fast, light
 weight and more flexible to the R community.</li>
+<li>To describe the design choices in our parallel discrete-event
+microsimulation R package.</li>
 <li>To demonstrate its use in a small case study.</li>
 
 </ul>
 </section>
-<section id="slide-orgheadline11">
-<h4 id="orgheadline11">Method</h4>
+<section id="slide-orgheadline10">
+<h4 id="orgheadline10">Methods</h4>
 <p>
 We implemented the microsimulations as an R package, with pre- and
 post-processing in R and with the simulations written in
@@ -6273,10 +6204,10 @@ antigen testing.
 </p>
 
 </section>
-<section id="slide-orgheadline12">
-<h4 id="orgheadline12">Results</h4>
+<section id="slide-orgheadline11">
+<h4 id="orgheadline11">Results</h4>
 <p>
-Our parallel discrete-event microsimulation R-package had close to
+Our parallel discrete-event microsimulation R package had close to
 linear scaling within a compute node for all the investigated
 implementations. For multiple nodes the <code>R</code> side <code>MPI</code> parallelism
 scaled well when tasks were sufficiently large. As the tasks became
@@ -6294,21 +6225,21 @@ two-yearly testing and current testing.
 </section>
 </section>
 <section>
-<section id="slide-orgheadline15">
-<h3 id="orgheadline15">Technical details: R package</h3>
+<section id="slide-orgheadline16">
+<h3 id="orgheadline16">Technical details: R package</h3>
 <ul>
 <li><a href="https://github.com/mclements/microsimulation">https://github.com/mclements/microsimulation</a></li>
-<li>Fast and flexible discrete-event simulation (DES) microsimulation</li>
-<li>Common random number support</li>
-<li>In simulation report reductions</li>
-<li>Support for distributed memory parallelism</li>
+<li>Fast and flexible discrete-event simulation (DES) microsimulation.</li>
+<li>Common random number support.</li>
+<li>In-simulation report reductions.</li>
+<li>Support for distributed memory parallelism.</li>
 
 </ul>
 
 </section>
-<section id="slide-orgheadline14">
-<h4 id="orgheadline14">Libraries</h4>
-<div id="bibliography">
+<section id="slide-orgheadline13">
+<h4 id="orgheadline13">Libraries</h4>
+<div id="small">
 <p>
 In addition to its speed, <code>C++</code> has several GPL-compatible libraries that has proven useful to us. The microsimulation package depends on:
 </p>
@@ -6338,10 +6269,8 @@ using tuples as keys.</dd>
 </div>
 
 </section>
-</section>
-<section>
-<section id="slide-orgheadline18">
-<h3 id="orgheadline18">Performance</h3>
+<section id="slide-orgheadline14">
+<h4 id="orgheadline14">Performance</h4>
 
 <div class="figure">
 <p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA7AAAAJ1CAYAAADg7xxxAAAACXBIWXMAAB7CAAAewgFu0HU+AAAg
@@ -7238,8 +7167,8 @@ VxX8xk81CgAAAABJRU5ErkJggg==" style="background:none; border:none; box-shadow:no
 </div>
 
 </section>
-<section id="slide-orgheadline16">
-<h4 id="orgheadline16">Efficiency</h4>
+<section id="slide-orgheadline15">
+<h4 id="orgheadline15">Efficiency</h4>
 
 <div class="figure">
 <p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA7AAAAJ1CAYAAADg7xxxAAAACXBIWXMAAB7CAAAewgFu0HU+AAAg
@@ -8202,23 +8131,21 @@ JEmSJEmSJEmSJEmSJEmSJEmSJEmSSvwfZMecQfodbRIAAAAASUVORK5CYII=" style="background:
 </div>
 
 </section>
-<section id="slide-orgheadline17">
-<h4 id="orgheadline17">Prevalence</h4>
-</section>
 </section>
 <section>
-<section id="slide-orgheadline24">
-<h3 id="orgheadline24">Case Study: FHCRC</h3>
+<section id="slide-orgheadline22">
+<h3 id="orgheadline22">Case Study: FHCRC</h3>
 <ul>
-<li>Implementation of the CISNET's FHCRC prostate cancer
+<li>Re-implement a prostate cancer model from the Fred Hutchinson
+Cancer Research Center (FHCRC)
 <span style="white-space: nowrap">model.<font size='4'><sup><a href="#gulati_calibrating_2010">8</a></sup></font><font size='4'><sup><a href="#etzioni_impact_2008">9</a></sup></font></span></li>
-<li>Well validated prostate cancer NH model</li>
-<li>Open source prostate cancer screening model</li>
+<li>Well validated prostate cancer NH model.</li>
+<li>Open source prostate cancer screening model.</li>
 
 </ul>
 </section>
-<section id="slide-orgheadline19">
-<h4 id="orgheadline19">Model description</h4>
+<section id="slide-orgheadline17">
+<h4 id="orgheadline17">Model description</h4>
 <div>
 \begin{align}
 \log(y_{i}(t))&=\beta_{0i}+\beta_{1i}t
@@ -8242,8 +8169,8 @@ which are random slopes</li>
 </ul>
 
 </section>
-<section id="slide-orgheadline20">
-<h4 id="orgheadline20">Onset</h4>
+<section id="slide-orgheadline18">
+<h4 id="orgheadline18">Onset</h4>
 <p>
 The disease onset rate has the hazard:
 </p>
@@ -8262,8 +8189,8 @@ shown in Figure <a href="#/slide-orgparagraph2">6</a>.
 </p>
 
 </section>
-<section id="slide-orgheadline21">
-<h4 id="orgheadline21">Density of cancer onset</h4>
+<section id="slide-orgheadline19">
+<h4 id="orgheadline19">Density of cancer onset</h4>
 
 <div id="orgparagraph2" class="figure">
 <p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABJ0AAAN1CAYAAADVAIomAAAACXBIWXMAABcRAAAXEQHKJvM/AAAg
@@ -8801,12 +8728,11 @@ JEXxafQLx/lJ/qih73W1RAcAAABAz7o5YxuMH0jyRIoNykfbPlZbZAAAAAD0tDVJNqYoOB1M8kiS
 f09yfWwgDgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 ADCT/D+QicozBInXYAAAAABJRU5ErkJggg==" style="background:none; border:none; box-shadow:none; height:70%;" />
 </p>
-<p><span class="figure-number">Figure 6:</span> Density of cancer onset as described by the FHCRC natural history model.</p>
 </div>
 
 </section>
-<section id="slide-orgheadline22">
-<h4 id="orgheadline22">Transition rates</h4>
+<section id="slide-orgheadline20">
+<h4 id="orgheadline20">Transition rates</h4>
 <p>
 The hazards of transitioning between states (i.e., healthy,
 preclinical, clinical, localized, metastatic) are dependent on \(t\) and
@@ -8835,8 +8761,8 @@ Gleason grade, with a common change for Gleason grades 6&#x2013;7 and a
 common change for Gleason grade 8+.
 </p>
 </section>
-<section id="slide-orgheadline23">
-<h4 id="orgheadline23">Transition rates metastatic disease</h4>
+<section id="slide-orgheadline21">
+<h4 id="orgheadline21">Transition rates metastatic disease</h4>
 <p>
 The rate for metastatic disease for low and high grade tumors is
 \(\propto PSA\), where \(\gamma_{m}\) is the metastasis hazard for
@@ -8870,41 +8796,199 @@ hazard for pre-metastasis clinical diagnosis for high-grade cases.
 </section>
 </section>
 <section>
-<section id="slide-orgheadline43">
-<h2 id="orgheadline43">Study 2</h2>
+<section id="slide-orgheadline41">
+<h2 id="orgheadline41">Study 2</h2>
 <p>
-Draft: <b>Would organised prostate cancer testing be cost-effective in
+<b>Would organised prostate cancer testing be cost-effective in
 Sweden?</b>
 </p>
 
 </section>
 </section>
 <section>
+<section id="slide-orgheadline24">
+<h3 id="orgheadline24">Background</h3>
+<aside class="notes">
+<ul>
+<li>Current testing is opportunistic</li>
+<li>Would organised testing be better</li>
+<li>Social styrelsen has reopened its investigation on prostate cacner screening</li>
+
+</ul>
+
+</aside>
+<ul>
+<li>Current testing is opportunistic.</li>
+<li>Would organised testing be effective and lower costs?</li>
+<li>Testing could be opt-in or opt-out.</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orgheadline25">
+<h3 id="orgheadline25">Methods</h3>
+<ul>
+<li>Implement the FHCRC model using our<span style="white-space: nowrap">
+  package.<font size='4'><sup><a href="#gulati_calibrating_2010">8</a></sup></font><font size='4'><sup><a href="#microsimulation">10</a></sup></font></span></li>
+<li>Incorporate Swedish input data.</li>
+<li>Calibrate (or fit) NH parameters using Swedish <i>calibration targets</i>.</li>
+<li>Validate the model predictions using Swedish data.</li>
+<li>Evaluate the cost-effectiveness of organised screening, with assumptions
+on cost and compliance.</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orgheadline26">
+<h3 id="orgheadline26">Data Sources</h3>
+<aside class="notes">
+<p>
+
+</p>
+
+</aside>
+
+<div id="small">
+<!-- This HTML table template is generated by emacs 24.5.1 -->
+<table border="1">
+  <tr>
+    <td align="left" valign="top">
+      Study&nbsp;name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      Description&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      Study&nbsp;size&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      STHLM0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      Population&nbsp;of&nbsp;men&nbsp;with&nbsp;a&nbsp;PSA&nbsp;test&nbsp;in&nbsp;Stockholm&nbsp;<br />
+      from&nbsp;2003.&nbsp;Linked&nbsp;with&nbsp;registrations,&nbsp;deaths,&nbsp;&nbsp;<br />
+      migration,&nbsp;prescribed&nbsp;drugs&nbsp;etc.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      400,000&nbsp;men&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      STHLM3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      Diagnostic&nbsp;trial&nbsp;for&nbsp;biomarker&nbsp;development&nbsp;of&nbsp;a<br />
+      prostate&nbsp;cancer&nbsp;screening&nbsp;test&nbsp;in&nbsp;2013-2014.&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      60,000&nbsp;men&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      PCBaSe&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      Survival&nbsp;at&nbsp;10&nbsp;and&nbsp;15&nbsp;years&nbsp;by&nbsp;PSA,&nbsp;grade&nbsp;and&nbsp;&nbsp;<br />
+      stage.&nbsp;PCBaSe&nbsp;links&nbsp;the&nbsp;national&nbsp;quality&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      register&nbsp;on&nbsp;prostate&nbsp;cancer&nbsp;with&nbsp;the&nbsp;cause&nbsp;of&nbsp;&nbsp;<br />
+      death&nbsp;register.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      80,000&nbsp;cases&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      Life-tables&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      Life-tables&nbsp;by&nbsp;age&nbsp;and&nbsp;calendar&nbsp;year&nbsp;from&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      Statistics&nbsp;Sweden.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      Sweden,&nbsp;Stockholm<br />
+      county&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      Prostate&nbsp;cancer<br />
+      incidence&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      Prostate&nbsp;cancer&nbsp;incidence&nbsp;by&nbsp;age&nbsp;and&nbsp;calendar&nbsp;&nbsp;<br />
+      year&nbsp;from&nbsp;Socialstyrelsen.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      Sweden,&nbsp;Stockholm<br />
+      county&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      Prostate&nbsp;cancer<br />
+      mortality&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      Prostate&nbsp;cancer&nbsp;mortality&nbsp;by&nbsp;age&nbsp;and&nbsp;calendar&nbsp;&nbsp;<br />
+      year&nbsp;from&nbsp;Socialstyrelsen.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      Sweden,&nbsp;Stockholm<br />
+      county&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+</table>
+</div>
+
+</section>
+</section>
+<section>
 <section id="slide-orgheadline29">
-<h3 id="orgheadline29">Adaption to Swedish population</h3>
-<div id="bibliography">
+<h3 id="orgheadline29">Methods: Adaption to Swedish population</h3>
+<div id="small">
 <dl>
-<dt>Input tables</dt><dd><ul>
-<li>PSA testing by age &amp; calendar year(STHLM0)</li>
+<dt>Input data</dt><dd><ul>
+<li>PSA testing by age &amp; calendar year (STHLM0)</li>
 <li>PSA re-testing by PSA &amp; age (STHLM0)</li>
 <li>Biopsy compliance by age &amp; PSA (STHLM0)</li>
 <li>Treatment patterns by age &amp; Gleason score (STHLM0)</li>
-<li>Costs investigated by the Swedish Institute for Health Economics (IHE)</li>
+<li>Costs investigated by the Swedish Institute for Health Economics</li>
 <li>Quality of life from international <span style="white-space: nowrap"> literature
-<font size='4'><sup><a href="#pataky_is_2014">10</a></sup></font><font size='4'><sup><a href="#heijnsdijk_cost-effectiveness_2015">11</a></sup></font></span></li>
+<font size='4'><sup><a href="#pataky_is_2014">11</a></sup></font><font size='4'><sup><a href="#heijnsdijk_cost-effectiveness_2015">12</a></sup></font></span></li>
 
 </ul></dd>
 <dt>Calibration targets</dt><dd><ul>
-<li>Gleason score at diagnosis by age (STHLM0)</li>
-<li>Survival by PSA, age, Gleason score and stage (PcBaSe)</li>
+<li>Gleason score by age (STHLM0)</li>
+<li>Survival by PSA, age, Gleason score and stage (PCBaSe)</li>
 
 </ul></dd>
 <dt>Validation</dt><dd><ul>
-<li>Prostate cancer incidence pre- and post-PSA introduction by age,
-calendar year (National Board of Health and Welfare)</li>
-<li>Prostate cancer mortality by age, calendar year (National Board of
+<li>Prostate cancer incidence (National Board of Health and Welfare)</li>
+<li>Prostate cancer mortality (National Board of
 Health and Welfare)</li>
-<li>All cause mortality by age, calendar year (Statistics Sweden)</li>
+<li>All cause mortality (Statistics Sweden)</li>
 
 </ul></dd>
 
@@ -8912,310 +8996,8 @@ Health and Welfare)</li>
 </div>
 
 </section>
-<section id="slide-orgheadline26">
-<h4 id="orgheadline26">Swedish survival data localised HRs</h4>
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-right" />
-
-<col  class="org-right" />
-
-<col  class="org-right" />
-
-<col  class="org-right" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-right">age</th>
-<th scope="col" class="org-right">ext<sub>grade</sub></th>
-<th scope="col" class="org-right">psa10</th>
-<th scope="col" class="org-right">hr</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-right">50</td>
-<td class="org-right">0</td>
-<td class="org-right">0</td>
-<td class="org-right">0.4852788</td>
-</tr>
-
-<tr>
-<td class="org-right">60</td>
-<td class="org-right">0</td>
-<td class="org-right">0</td>
-<td class="org-right">0.7309101</td>
-</tr>
-
-<tr>
-<td class="org-right">70</td>
-<td class="org-right">0</td>
-<td class="org-right">0</td>
-<td class="org-right">1.5703646</td>
-</tr>
-
-<tr>
-<td class="org-right">50</td>
-<td class="org-right">1</td>
-<td class="org-right">0</td>
-<td class="org-right">3.1780491</td>
-</tr>
-
-<tr>
-<td class="org-right">60</td>
-<td class="org-right">1</td>
-<td class="org-right">0</td>
-<td class="org-right">2.2476271</td>
-</tr>
-
-<tr>
-<td class="org-right">70</td>
-<td class="org-right">1</td>
-<td class="org-right">0</td>
-<td class="org-right">3.1391895</td>
-</tr>
-
-<tr>
-<td class="org-right">50</td>
-<td class="org-right">2</td>
-<td class="org-right">0</td>
-<td class="org-right">1.2743633</td>
-</tr>
-
-<tr>
-<td class="org-right">60</td>
-<td class="org-right">2</td>
-<td class="org-right">0</td>
-<td class="org-right">0.9972281</td>
-</tr>
-
-<tr>
-<td class="org-right">70</td>
-<td class="org-right">2</td>
-<td class="org-right">0</td>
-<td class="org-right">1.259677</td>
-</tr>
-
-<tr>
-<td class="org-right">50</td>
-<td class="org-right">0</td>
-<td class="org-right">1</td>
-<td class="org-right">1.0367029</td>
-</tr>
-
-<tr>
-<td class="org-right">60</td>
-<td class="org-right">0</td>
-<td class="org-right">1</td>
-<td class="org-right">0.9528743</td>
-</tr>
-
-<tr>
-<td class="org-right">70</td>
-<td class="org-right">0</td>
-<td class="org-right">1</td>
-<td class="org-right">1.3431982</td>
-</tr>
-
-<tr>
-<td class="org-right">50</td>
-<td class="org-right">1</td>
-<td class="org-right">1</td>
-<td class="org-right">7.3491808</td>
-</tr>
-
-<tr>
-<td class="org-right">60</td>
-<td class="org-right">1</td>
-<td class="org-right">1</td>
-<td class="org-right">3.4922388</td>
-</tr>
-
-<tr>
-<td class="org-right">70</td>
-<td class="org-right">1</td>
-<td class="org-right">1</td>
-<td class="org-right">2.8214167</td>
-</tr>
-
-<tr>
-<td class="org-right">50</td>
-<td class="org-right">2</td>
-<td class="org-right">1</td>
-<td class="org-right">0.7880672</td>
-</tr>
-
-<tr>
-<td class="org-right">60</td>
-<td class="org-right">2</td>
-<td class="org-right">1</td>
-<td class="org-right">0.7624732</td>
-</tr>
-
-<tr>
-<td class="org-right">70</td>
-<td class="org-right">2</td>
-<td class="org-right">1</td>
-<td class="org-right">0.7827559</td>
-</tr>
-</tbody>
-</table>
-
-</section>
 <section id="slide-orgheadline27">
-<h4 id="orgheadline27">Swedish survival data metastatic HRs</h4>
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides" height="100%">
-
-
-<colgroup>
-<col  class="org-right" />
-
-<col  class="org-right" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-right">age</th>
-<th scope="col" class="org-right">hr</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-right">50</td>
-<td class="org-right">0.8325735</td>
-</tr>
-
-<tr>
-<td class="org-right">60</td>
-<td class="org-right">0.9403021</td>
-</tr>
-
-<tr>
-<td class="org-right">70</td>
-<td class="org-right">0.7998358</td>
-</tr>
-</tbody>
-</table>
-
-</section>
-<section id="slide-orgheadline28">
-<h4 id="orgheadline28">Observed compliance from STHLM0 by psa and age from STHLM0.</h4>
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-right" />
-
-<col  class="org-right" />
-
-<col  class="org-right" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-right">psa</th>
-<th scope="col" class="org-right">age</th>
-<th scope="col" class="org-right">compliance</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-right">3</td>
-<td class="org-right">40</td>
-<td class="org-right">0.3764045</td>
-</tr>
-
-<tr>
-<td class="org-right">5</td>
-<td class="org-right">40</td>
-<td class="org-right">0.5680751</td>
-</tr>
-
-<tr>
-<td class="org-right">10</td>
-<td class="org-right">40</td>
-<td class="org-right">0.7727273</td>
-</tr>
-
-<tr>
-<td class="org-right">3</td>
-<td class="org-right">50</td>
-<td class="org-right">0.311077</td>
-</tr>
-
-<tr>
-<td class="org-right">5</td>
-<td class="org-right">50</td>
-<td class="org-right">0.5726548</td>
-</tr>
-
-<tr>
-<td class="org-right">10</td>
-<td class="org-right">50</td>
-<td class="org-right">0.7537372</td>
-</tr>
-
-<tr>
-<td class="org-right">3</td>
-<td class="org-right">60</td>
-<td class="org-right">0.2385155</td>
-</tr>
-
-<tr>
-<td class="org-right">5</td>
-<td class="org-right">60</td>
-<td class="org-right">0.4814588</td>
-</tr>
-
-<tr>
-<td class="org-right">10</td>
-<td class="org-right">60</td>
-<td class="org-right">0.692977</td>
-</tr>
-
-<tr>
-<td class="org-right">3</td>
-<td class="org-right">70</td>
-<td class="org-right">0.1754264</td>
-</tr>
-
-<tr>
-<td class="org-right">5</td>
-<td class="org-right">70</td>
-<td class="org-right">0.3685056</td>
-</tr>
-
-<tr>
-<td class="org-right">10</td>
-<td class="org-right">70</td>
-<td class="org-right">0.560203</td>
-</tr>
-
-<tr>
-<td class="org-right">3</td>
-<td class="org-right">80</td>
-<td class="org-right">0.1629213</td>
-</tr>
-
-<tr>
-<td class="org-right">5</td>
-<td class="org-right">80</td>
-<td class="org-right">0.2697368</td>
-</tr>
-
-<tr>
-<td class="org-right">10</td>
-<td class="org-right">80</td>
-<td class="org-right">0.5010052</td>
-</tr>
-</tbody>
-</table>
-
-</section>
-</section>
-<section>
-<section id="slide-orgheadline30">
-<h3 id="orgheadline30">Treatment patterns</h3>
+<h4 id="orgheadline27">Input example: treatment patterns</h4>
 
 <div class="figure">
 <p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABJ0AAAN1CAYAAADVAIomAAAACXBIWXMAABcRAAAXEQHKJvM/AAAg
@@ -9721,10 +9503,8 @@ AAAAAAAAAAAAAAAAAAAAAAAAAIAB9P8DwTIcrZzWxYQAAAAASUVORK5CYII=" style="background:
 </div>
 
 </section>
-</section>
-<section>
-<section id="slide-orgheadline31">
-<h3 id="orgheadline31">Calibrating to Gleason proportions</h3>
+<section id="slide-orgheadline28">
+<h4 id="orgheadline28">Calibrating to Gleason proportions</h4>
 
 <div class="figure">
 <p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABJ0AAAN1CAYAAADVAIomAAAACXBIWXMAABcRAAAXEQHKJvM/AAAg
@@ -10722,11 +10502,12 @@ TAAAAABJRU5ErkJggg==" style="background:none; border:none; box-shadow:none; heig
 </p>
 </div>
 
+
 </section>
 </section>
 <section>
-<section id="slide-orgheadline32">
-<h3 id="orgheadline32">Calibration of survival to PCBaSE</h3>
+<section id="slide-orgheadline30">
+<h3 id="orgheadline30">Calibration of survival to PCBaSE</h3>
 
 <div class="figure">
 <p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAkIAAAI1CAYAAAA6gJV5AAAABmJLR0QA/wD/AP+gvaeTAAAACXBI
@@ -11852,15 +11633,15 @@ QBKGUCORlCFkGEYILFjaqJQ8EnNTLq3IVNwg5pY4fp5VvWEYhlEpFixtZIlVrD0DrFIWUfAyGZU9
 m5v1rxEPb7B2niDDMGLGPEJGlriZztO3wxj63Urss1T/Ftuvi1U9LSXqqB3JDlyqLk3nCM0hZPNN
 k03DMEPIMKLSjsQfjY/pfKsbvC77E99snU9MNlkvRtk0j6ZhVIBF4Bv13uuOiw6KJ4ardz3RZHVp
 smkYhmEYhmEYhmEYhmEYhmEYhmEYhmEYhmEYhmEYhmEYhmEYhmEYhmEYhmEYhmEYhmEYhmEYhmEY
-hmEYhmEYhmEYhmEYhlE7/h8IiYoYQO59TgAAAABJRU5ErkJggg==" style="background:none; border:none; box-shadow:none; height:80%;" />
+hmEYhmEYhmEYhmEYhlE7/h8IiYoYQO59TgAAAABJRU5ErkJggg==" style="background:none; border:none; box-shadow:none; height:100%;" />
 </p>
 </div>
 
 </section>
 </section>
 <section>
-<section id="slide-orgheadline33">
-<h3 id="orgheadline33">Are the results valid?</h3>
+<section id="slide-orgheadline31">
+<h3 id="orgheadline31">Are the results valid?</h3>
 
 <div class="figure">
 <p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZAAAAJTCAYAAAAmK0BLAAAABmJLR0QA/wD/AP+gvaeTAAAACXBI
@@ -14716,8 +14497,8 @@ lyX/BfD2+AKTwAikAAAAAElFTkSuQmCC" style="background:none; border:none; box-shado
 </section>
 </section>
 <section>
-<section id="slide-orgheadline34">
-<h3 id="orgheadline34">Validation incidence prior to PSA</h3>
+<section id="slide-orgheadline32">
+<h3 id="orgheadline32">Validation incidence prior to PSA</h3>
 
 <div id="orgparagraph3" class="figure">
 <p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABJ0AAAN1CAYAAADVAIomAAAACXBIWXMAABcRAAAXEQHKJvM/AAAg
@@ -19886,10 +19667,8 @@ kiRJkiRJkiRJkiRJkiRJkiRJkiRpR/J/ryXBPHbye4gAAAAASUVORK5CYII=" style="background:
 
 
 </section>
-</section>
-<section>
-<section id="slide-orgheadline36">
-<h3 id="orgheadline36">Validation of prostate cancer specific mortality</h3>
+<section id="slide-orgheadline33">
+<h4 id="orgheadline33">Validation of prostate cancer mortality</h4>
 
 <div class="figure">
 <p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABJ0AAAN1CAYAAADVAIomAAAACXBIWXMAABcRAAAXEQHKJvM/AAAg
@@ -22434,10 +22213,8 @@ QmCC" style="background:none; border:none; box-shadow:none; height: 600px;" />
 </p>
 </div>
 </section>
-</section>
-<section>
-<section id="slide-orgheadline37">
-<h3 id="orgheadline37">Validation of all cause mortality</h3>
+<section id="slide-orgheadline34">
+<h4 id="orgheadline34">Validation of all cause mortality</h4>
 
 <div class="figure">
 <p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABJ0AAAN1CAYAAADVAIomAAAACXBIWXMAABcRAAAXEQHKJvM/AAAg
@@ -25249,18 +25026,18 @@ AElFTkSuQmCC" style="background:none; border:none; box-shadow:none; height: 600p
 </section>
 </section>
 <section>
-<section id="slide-orgheadline40">
-<h3 id="orgheadline40">Cost-effectiveness</h3>
-<div id="bibliography">
+<section id="slide-orgheadline38">
+<h3 id="orgheadline38">Cost-effectiveness</h3>
+<div id="small">
 <ul>
 <li>Cancer screening policies may be based on <i>cost-effectiveness
-analysis</i>, where the expected lifetime costs and health utilities
+analysis</i> (CEA), where the expected lifetime costs and health utilities
 for different policies are compared.</li>
+<li>CEA can take a <i>health sector</i> or <i>societal</i> perspective.</li>
 <li>The cost-effectiveness from the microsimulation can be described
 using utilities and costs for screening intervention \(k\), such that:</li>
 
 </ul>
-
 <div>
 \begin{align*}
   \mathrm{Effectiveness}_k =& \frac{1}{n}\sum_{i=1}^n \int_0^\infty \frac{dU_{ik}(t)}{(1+\delta)^t}\\
@@ -25268,19 +25045,19 @@ using utilities and costs for screening intervention \(k\), such that:</li>
 \end{align*}
 
 </div>
-
+<div align="left">
 <p>
 where we simulate for \(n\) individuals with index \(i\), with
 individual-based cumulative utilities \(U_{ik}(t)\) and costs
 \(C_{ik}(t)\) at time \(t\), with discounting \(\delta\)
 (e.g. \(\delta=0.03\)).
 </p>
-
+</div>
 </div>
 
 </section>
-<section id="slide-orgheadline38">
-<h4 id="orgheadline38">Cost</h4>
+<section id="slide-orgheadline36">
+<h4 id="orgheadline36">Cost</h4>
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -25339,9 +25116,9 @@ individual-based cumulative utilities \(U_{ik}(t)\) and costs
 </table>
 
 </section>
-<section id="slide-orgheadline39">
-<h4 id="orgheadline39">Utilities</h4>
-<div id="bibliography">
+<section id="slide-orgheadline37">
+<h4 id="orgheadline37">Utilities</h4>
+<div id="small">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -25443,8 +25220,8 @@ individual-based cumulative utilities \(U_{ik}(t)\) and costs
 </section>
 </section>
 <section>
-<section id="slide-orgheadline42">
-<h3 id="orgheadline42">Frontier</h3>
+<section id="slide-orgheadline40">
+<h3 id="orgheadline40">Results: Cost-effectiveness organised vs opportunistic</h3>
 
 <div class="figure">
 <p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAj4AAAICCAYAAADPisd6AAAABmJLR0QA/wD/AP+gvaeTAAAACXBI
@@ -25956,8 +25733,8 @@ RIGPiIiIiAIfEREREQU+IiIiIgp8RERERIGPiIiISKX6/8qv7kP9Rs9RAAAAAElFTkSuQmCC" style=
 </div>
 
 </section>
-<section id="slide-orgheadline41">
-<h4 id="orgheadline41">CEA un-discounted</h4>
+<section id="slide-orgheadline39">
+<h4 id="orgheadline39">CEA un-discounted</h4>
 
 <div class="figure">
 <p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAiUAAAHyCAYAAAA0vr7hAAAABmJLR0QA/wD/AP+gvaeTAAAACXBI
@@ -26414,10 +26191,12 @@ IqKkRERERERJiYiIiNS0/wc+pG8qAUDyDwAAAABJRU5ErkJggg==" style="background:none; bo
 </section>
 </section>
 <section>
-<section id="slide-orgheadline50">
-<h2 id="orgheadline50">Study 3</h2>
+<section id="slide-orgheadline49">
+<h2 id="orgheadline49">Study 3</h2>
 <aside class="notes">
 <ul>
+<li>STHLM3 was a diagnostic trial investigating a new test for prostate
+cancer testing</li>
 <li>STHLM3 was published in Lancet Oncology last year.</li>
 <li>Setting up the model to investigate it's cost-effectiveness is where
 we have spent the majority of our efforts.</li>
@@ -26427,12 +26206,180 @@ we have spent the majority of our efforts.</li>
 </aside>
 
 <p>
-Outdated draft: <b>Cost-effectiveness of prostate cancer screening:
-evidence for the STHLM3 biomarker panel and organised testing.</b>
+<b>Cost-effectiveness of prostate cancer screening:
+evidence for S3M and organised testing.</b>
 </p>
 
+
+</section>
+</section>
+<section>
+<section id="slide-orgheadline44">
+<h3 id="orgheadline44">Background: STHLM3</h3>
+<dl>
+<dt>Objective</dt><dd><ul>
+<li>Develop a new prostate cancer test to replace PSA</li>
+
+</ul></dd>
+<dt>The new test should</dt><dd><ul>
+<li>Identify at least as many aggressive cancers as PSA</li>
+<li>Significantly reduce the number of biopsies</li>
+<li>Be cost-effective</li>
+
+</ul></dd>
+<dt>STHLM3 Model</dt><dd><ul>
+<li>Combines SNPs, plasma-based biomarkers, and clinical information</li>
+<li>STHLM3 recruited 58,818 men, with 6,777 biopsies</li>
+
+</ul></dd>
+
+</dl>
+
+</section>
+<section id="slide-orgheadline42">
+<h4 id="orgheadline42">The S3M panel</h4>
+<dl>
+<dt>Genetic polymorphisms</dt><dd><ul>
+<li>232 SNPs</li>
+
+</ul></dd>
+<dt>Protein markers</dt><dd><ul>
+<li>Total PSA</li>
+<li>Free PSA</li>
+<li>Intact PSA</li>
+<li>HK2</li>
+<li>MSMB</li>
+<li>MIC-1</li>
+
+</ul></dd>
+<dt>Clinical data</dt><dd><ul>
+<li>Prostate Exam</li>
+<li>Prostate volume</li>
+<li>DRE</li>
+
+</ul></dd>
+
+</dl>
+</section>
+<section id="slide-orgheadline43">
+<h4 id="orgheadline43">STHLM3 reduced biopsies</h4>
+<div id="small">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Marker</th>
+<th scope="col" class="org-right">Univariate P-value</th>
+<th scope="col" class="org-right">Multivariate P-value</th>
+<th scope="col" class="org-left">Saved biopsies</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Total PSA</td>
+<td class="org-right">&lt;0.001</td>
+<td class="org-right">0.008</td>
+<td class="org-left">ref</td>
+</tr>
+
+<tr>
+<td class="org-left">Age</td>
+<td class="org-right">&lt;0.001</td>
+<td class="org-right">&lt;0.001</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">Family history</td>
+<td class="org-right">0.005</td>
+<td class="org-right">0.004</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">Previous biopsies</td>
+<td class="org-right">&lt;0.001</td>
+<td class="org-right">&lt;0.001</td>
+<td class="org-left">Risk factors 5%</td>
+</tr>
+
+<tr>
+<td class="org-left">Genetic score</td>
+<td class="org-right">&lt;0.001</td>
+<td class="org-right">0.006</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">MSMB</td>
+<td class="org-right">&lt;0.001</td>
+<td class="org-right">&lt;0.001</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">MIC1</td>
+<td class="org-right">&lt;0.001</td>
+<td class="org-right">0.047</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">Free PSA</td>
+<td class="org-right">&lt;0.001</td>
+<td class="org-right">&lt;0.001</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">Intact PSA</td>
+<td class="org-right">0.194</td>
+<td class="org-right">&lt;0.001</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">HK2</td>
+<td class="org-right">&lt;0.001</td>
+<td class="org-right">&lt;0.001</td>
+<td class="org-left">Biomarkers 27%</td>
+</tr>
+
+<tr>
+<td class="org-left">DRE</td>
+<td class="org-right">&lt;0.001</td>
+<td class="org-right">&lt;0.001</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">Prostate volume</td>
+<td class="org-right">&lt;0.001</td>
+<td class="org-right">&lt;0.001</td>
+<td class="org-left">Prostate exam 32%</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+</section>
+</section>
+<section>
+<section id="slide-orgheadline45">
+<h3 id="orgheadline45">Background: STHLM3 main findings</h3>
 <p>
-The main study was published in Lancet Oncology 2015:
+The STHLM3 study was published in Lancet Oncology 2015:
 </p>
 
 <div class="figure">
@@ -27427,171 +27374,18 @@ gv6qAAAAAElFTkSuQmCC" style="background:none; border:none; box-shadow:none; heig
 </p>
 </div>
 
+<ul>
+<li>Given the same number of Gleason 7+ cancers as PSA 3+, S3M reduced
+Gleason 6 cancers by 17% and reduced benign biopsies by 44%.</li>
+
+</ul>
+
+
 </section>
 </section>
 <section>
 <section id="slide-orgheadline46">
-<h3 id="orgheadline46">STHLM3</h3>
-<dl>
-<dt>Objective</dt><dd><ul>
-<li>Develop a new prostate cancer test that can replace PSA</li>
-
-</ul></dd>
-<dt>Conditions</dt><dd><ul>
-<li>Identify at least as many aggressive cancers as PSA</li>
-<li>Significantly reduce number of biopsies</li>
-<li>Demonstrate cost-effectiveness</li>
-
-</ul></dd>
-<dt>Method</dt><dd><ul>
-<li>Combine many existing markers</li>
-<li>Paired screen-positive (PSP) design: 58,818 men recruited, 6,777 biopsies conducted</li>
-
-</ul></dd>
-
-</dl>
-
-</section>
-<section id="slide-orgheadline44">
-<h4 id="orgheadline44">The S3M panel</h4>
-<dl>
-<dt>Genetic polymorphisms</dt><dd><ul>
-<li>232 SNPs</li>
-
-</ul></dd>
-<dt>Protein markers</dt><dd><ul>
-<li>Total PSA</li>
-<li>Free PSA</li>
-<li>Intact PSA</li>
-<li>HK2</li>
-<li>MSMB</li>
-<li>MIC-1</li>
-
-</ul></dd>
-<dt>Clinical data</dt><dd><ul>
-<li>Prostate Exam</li>
-<li>Prostate volume</li>
-<li>DRE</li>
-
-</ul></dd>
-
-</dl>
-</section>
-<section id="slide-orgheadline45">
-<h4 id="orgheadline45">STHLM3 reduced biopsies</h4>
-<div id="bibliography">
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-right" />
-
-<col  class="org-right" />
-
-<col  class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">Marker</th>
-<th scope="col" class="org-right">Univariate P-value</th>
-<th scope="col" class="org-right">Multivariate P-value</th>
-<th scope="col" class="org-left">Saved biopsies</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left">Total PSA</td>
-<td class="org-right">&lt;0.001</td>
-<td class="org-right">0.008</td>
-<td class="org-left">ref</td>
-</tr>
-
-<tr>
-<td class="org-left">Age</td>
-<td class="org-right">&lt;0.001</td>
-<td class="org-right">&lt;0.001</td>
-<td class="org-left">&#xa0;</td>
-</tr>
-
-<tr>
-<td class="org-left">Family history</td>
-<td class="org-right">0.005</td>
-<td class="org-right">0.004</td>
-<td class="org-left">&#xa0;</td>
-</tr>
-
-<tr>
-<td class="org-left">Previous biopsies</td>
-<td class="org-right">&lt;0.001</td>
-<td class="org-right">&lt;0.001</td>
-<td class="org-left">Risk factors 5%</td>
-</tr>
-
-<tr>
-<td class="org-left">Genetic score</td>
-<td class="org-right">&lt;0.001</td>
-<td class="org-right">0.006</td>
-<td class="org-left">&#xa0;</td>
-</tr>
-
-<tr>
-<td class="org-left">MSMB</td>
-<td class="org-right">&lt;0.001</td>
-<td class="org-right">&lt;0.001</td>
-<td class="org-left">&#xa0;</td>
-</tr>
-
-<tr>
-<td class="org-left">MIC1</td>
-<td class="org-right">&lt;0.001</td>
-<td class="org-right">0.047</td>
-<td class="org-left">&#xa0;</td>
-</tr>
-
-<tr>
-<td class="org-left">Free PSA</td>
-<td class="org-right">&lt;0.001</td>
-<td class="org-right">&lt;0.001</td>
-<td class="org-left">&#xa0;</td>
-</tr>
-
-<tr>
-<td class="org-left">Intact PSA</td>
-<td class="org-right">0.194</td>
-<td class="org-right">&lt;0.001</td>
-<td class="org-left">&#xa0;</td>
-</tr>
-
-<tr>
-<td class="org-left">HK2</td>
-<td class="org-right">&lt;0.001</td>
-<td class="org-right">&lt;0.001</td>
-<td class="org-left">Biomarkers 27%</td>
-</tr>
-
-<tr>
-<td class="org-left">DRE</td>
-<td class="org-right">&lt;0.001</td>
-<td class="org-right">&lt;0.001</td>
-<td class="org-left">&#xa0;</td>
-</tr>
-
-<tr>
-<td class="org-left">Prostate volume</td>
-<td class="org-right">&lt;0.001</td>
-<td class="org-right">&lt;0.001</td>
-<td class="org-left">Prostate exam 32%</td>
-</tr>
-</tbody>
-</table>
-</div>
-</section>
-</section>
-<section>
-<section id="slide-orgheadline47">
-<h3 id="orgheadline47">Extended Modelled states</h3>
+<h3 id="orgheadline46">Methods: extended modelled states</h3>
 
 <div id="orgparagraph5" class="figure">
 <p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA1sAAAIYCAQAAAAxjj74AAAJKWlDQ1BpY2MAAHjalZFnUJSHFobP
@@ -27637,7 +27431,7 @@ CR9HP555kvzk3dPsp0vPto/jx4ufiz2vfCH/ovFX7V87hGbCSxOOE4Mv/V8+m+RNvvkt87flqcJX
 9FeV00rTLTPGMxdnnWfvv173eupN+puluaLfxX+ve6v19vwfdn8MzofMT73jv1v5s/S9zPsTH0w+
 9C34LLz4mPJxabH4k8ynk585nwe+BH+ZXspZJi5XfdX+2vvN49v4SsrKyn8ALqKQvFCn7rEAAAAg
 Y0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAAJiS0dEAP+Hj8y/AAAA
-CXBIWXMAAADIAAAAyABj+uetAAAAB3RJTUUH4AkTFDsNzACzCwAAgABJREFUeNrtnXl8FGW2sJ+Z
+CXBIWXMAAADIAAAAyABj+uetAAAAB3RJTUUH4AkVFh0OsDjqJwAAgABJREFUeNrtnXl8FGW2sJ+Z
 O/c6w5KEuWSUNSjoEAQSiOIoBgRxgoAsEVEx7AqOAgZBQSCABhCUJYCooGwBccOwK4xISOKu2USN
 Owmb44SZdBJkxrm/L/X90dWV6u7qLd2hupLz1I9Q9a6n3lOnTr1LVf9KQRAEQRCswq/NFkAQBEEQ
 /OdXZgsgXAQiaG62CIIQFvzCuYteZxuzT9qynDEKVPiN2XIJ9Uob2tCWlmaLIQhhwy+c4Qw/8Eu9
@@ -28256,8 +28050,8 @@ g1t4m43gtAAeylvwPfkyUCgIgiCEFb/nUyqirwHF+XXj6AqmMIA5ZssnCIIgCDo20IJR9l2XBfDR
 r/M6sx2RgiAIgmA6y7mD5dE/2A/c39uaQj6v8boshRcEQRBM5xrymc3y6OWOADe3FV0RfQtzGMD3
 TKGj2fIKgiAIjZZrWM6ntOCWaN3k1a+M05ZfwQYGAD/wutlyC4IgCI2OFtxBC2A5y6MraoMVT24L
 oLwFd5DAFWbLLgiCIDRC8smPdus4KfxKMVswQRAEQfCb/w9AsqKCNs0mmgAAACV0RVh0ZGF0ZTpj
-cmVhdGUAMjAxNi0wOS0xOVQyMjo1OToxMyswMjowMNcteekAAAAldEVYdGRhdGU6bW9kaWZ5ADIw
-MTYtMDktMTlUMjI6NTk6MTMrMDI6MDCmcMFVAAAAFHRFWHRwZGY6VmVyc2lvbgBQREYtMS41IAVc
+cmVhdGUAMjAxNi0wOS0yMlQwMDoyOToxNCswMjowMLPCUzsAAAAldEVYdGRhdGU6bW9kaWZ5ADIw
+MTYtMDktMjJUMDA6Mjk6MTQrMDI6MDDCn+uHAAAAFHRFWHRwZGY6VmVyc2lvbgBQREYtMS41IAVc
 CzkAAAAASUVORK5CYII=" style="background:none; border:none; box-shadow:none; width:90%;" />
 </p>
 </div>
@@ -28265,13 +28059,8 @@ CzkAAAAASUVORK5CYII=" style="background:none; border:none; box-shadow:none; widt
 </section>
 </section>
 <section>
-<section id="slide-orgheadline48">
-<h3 id="orgheadline48">Modelling the S3M panel</h3>
-<div id="bibliography">
-<ul>
-<li><p>
-Planned approach:
-</p>
+<section id="slide-orgheadline47">
+<h3 id="orgheadline47">Methods: extending FHCRC to model S3M</h3>
 
 <div id="orgparagraph6" class="figure">
 <p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA0MAAAFUCAQAAABMhS9uAAAJKWlDQ1BpY2MAAHjalZFnUJSHFobP
@@ -28317,7 +28106,7 @@ CR9HP555kvzk3dPsp0vPto/jx4ufiz2vfCH/ovFX7V87hGbCSxOOE4Mv/V8+m+RNvvkt87flqcJX
 9FeV00rTLTPGMxdnnWfvv173eupN+puluaLfxX+ve6v19vwfdn8MzofMT73jv1v5s/S9zPsTH0w+
 9C34LLz4mPJxabH4k8ynk585nwe+BH+ZXspZJi5XfdX+2vvN49v4SsrKyn8ALqKQvFCn7rEAAAAg
 Y0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAAJiS0dEAP+Hj8y/AAAA
-CXBIWXMAAADIAAAAyABj+uetAAAAB3RJTUUH4AkTFDsOVQnisQAAMIVJREFUeNrtnb2u80y713/X
+CXBIWXMAAADIAAAAyABj+uetAAAAB3RJTUUH4AkVFh0QSjfXRAAAMIVJREFUeNrtnb2u80y713/X
 q7fiY/P6gWIXFMi3ttgF2o1vCTp24VUh0fkWBYgC5MUZZB2C1wGAlIgDQMkhOAUNEkUs7ZIm6RDF
 FvEr7QoKhsKOYzvO11pJ7MT/3+h57pXEHs+MP/6+Zq65xhxCCCFEX/yu7wIIIYQYM5IhIYQQPSIZ
 EkII0SOSISGEED0iGRJCCNEjkiEhhBA9IhkSQgjRI5IhIYQQPSIZEkII0SOSISGEED0iGRJCCNEj
@@ -28536,29 +28325,27 @@ xdkgLlt03ZDVpNxn1XC5rrU2Qbu1Scpft7t6ETMvWz/Ew2NKyhSvtmftuq59mxJXTv1uP52WmJR1
 /ZrozqmzPbYdX4aXtKTSOJMWARdCCNEjGhsSQgjRI5IhIYQQPSIZEkII0SOSISGEED0iGRJCCNEj
 kiEhhBA9IhkSQgjRI5IhIYQQPSIZEkII0SOSISGEED0iGRJCCNEjkiEhhBA9IhkSQgjRI5IhIYQQ
 PSIZEkII0SOSISGEED0iGRJCCNEjkiEhhBA9IhkSQgjRI/8fgT4ysTMlxXoAAAAldEVYdGRhdGU6
-Y3JlYXRlADIwMTYtMDktMTlUMjI6NTk6MTQrMDI6MDASikdnAAAAJXRFWHRkYXRlOm1vZGlmeQAy
-MDE2LTA5LTE5VDIyOjU5OjE0KzAyOjAwY9f/2wAAABR0RVh0cGRmOlZlcnNpb24AUERGLTEuNSAF
-XAs5AAAAAElFTkSuQmCC" style="background:none; border:none; box-shadow:none; height:30%;" />
+Y3JlYXRlADIwMTYtMDktMjJUMDA6Mjk6MTUrMDI6MDAVtViPAAAAJXRFWHRkYXRlOm1vZGlmeQAy
+MDE2LTA5LTIyVDAwOjI5OjE1KzAyOjAwZOjgMwAAABR0RVh0cGRmOlZlcnNpb24AUERGLTEuNSAF
+XAs5AAAAAElFTkSuQmCC" style="background:none; border:none; box-shadow:none; height:250px;" />
 </p>
-</div></li>
+</div>
 
-<li>STHLM3 does not yet include long-term data. We are currently using
-the published true and false-positive rates relative to
-<span style="white-space: nowrap"> PSA.<font size='4'><sup><a href="#gronberg_STHLM3_2015">12</a></sup></font></span></li>
-<li>For parsimony, we assume that S3M is positive: for Gleason 7+
-cancers with PSA above 3 ng/ml; and for Gleason 6 cancers and men
-without cancer with a PSA above a threshold based on the STHLM3
-false positive fraction.</li>
+<ul>
+<li>We initially wanted a longitudinal model for S3M, however follow-up
+data are not yet available.</li>
+<li>For parsimony, we assume that S3M is positive when: for Gleason 7+
+cancers, PSA is above 3 ng/ml; and for Gleason 6 cancers and men
+without cancer, PSA is above a threshold based on the STHLM3
+false positive fractions.</li>
 
 </ul>
-
-</div>
 
 </section>
 </section>
 <section>
-<section id="slide-orgheadline49">
-<h3 id="orgheadline49">Outdated: Biomarker panel comparison with PSA</h3>
+<section id="slide-orgheadline48">
+<h3 id="orgheadline48">Results: Cost-effectiveness of S3M vs PSA</h3>
 
 <div class="figure">
 <p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAfgAAAH4CAYAAACmKP9/AAAJKWlDQ1BpY2MAAHjalZFnUJSHFobP
@@ -28604,322 +28391,352 @@ CR9HP555kvzk3dPsp0vPto/jx4ufiz2vfCH/ovFX7V87hGbCSxOOE4Mv/V8+m+RNvvkt87flqcJX
 9FeV00rTLTPGMxdnnWfvv173eupN+puluaLfxX+ve6v19vwfdn8MzofMT73jv1v5s/S9zPsTH0w+
 9C34LLz4mPJxabH4k8ynk585nwe+BH+ZXspZJi5XfdX+2vvN49v4SsrKyn8ALqKQvFCn7rEAAAAg
 Y0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAAZiS0dEAP8A/wD/oL2n
-kwAAAAlwSFlzAAAASAAAAEgARslrPgAAAAd0SU1FB+AJExMWIzWz8q4AAEOdSURBVHja7d1/nGx3
-Xef59yc/+JVLtC56UYcdkr6yEIkupO7j8suAlamWKKI8LlZLLqMZZaZ7mVWXlc12D7tM9PGYB49q
-XfHXY8x2M64icKPdC4I/Bnx0bQpBzBC7JgwyJkK6yCgjTFZuYUgi4UI++8f3e7pPV1d1VXdX9Tl1
-6vW8j/PoqnPqnPM9VXXrc76/zd0FAACK5bKsEwAAAEaPAA8AQAER4AEAKCACPAAABUSABwCggAjw
-AAAUEAEeAIACIsADAFBABHgAAAqIAA8AQAER4AEAKCACPAAABUSABwCggAjwAAAUEAEeAIACIsAD
-AFBABHgAAAqIAA8AQAER4AEAKCACPAAABUSABwCggAjwAAAUEAEeAIACIsADAFBABHgAAAqIAA8A
-QAER4AEAKCACPAAABUSABwCggAjwAAAUEAEeAIACIsADAFBABHgAAAqIAA8AQAER4AEAKCACPAAA
-BUSABwCggAjwAAAUEAEeAIACIsADAFBABHgAAAqIAA8AQAER4AEAKCACPAAABUSABwCggAjwAAAU
-EAEeAIACIsADAFBABHgAAAqIAA8AQAER4AEAKCACPAAABUSABwCggAjwAAAUEAEeAIACIsADAFBA
-BHgAAAroiqwTcFzMrCSpnHU6AABTp+XuneM+6dQEeIXgviiplXVCAABToyxpWVLjuE88TQFeCndR
-S1knAgAwHcysntW5qYMHAKCACPAAABQQAR4AgAIiwAMAUEAEeAAACogADwBAARHgAQAoIAI8AAAF
-RIAHAKCACPAAABQQAR4AgAIiwAMAUEAEeAAACogADwBAARHgAQAoIAI8AAAFRIAHAKCACPAAABQQ
-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
-awpzuUthXPlW1mkCcHBmVpfUcPdjH5k1N0X0ohU9IElqNptJqZVEcAdwSHkK8LSix9SLwX1F4f8C
-wR3AoeWmDp5W9Jh2BHcAo5SnHDwwtQjuAEaNAA9krNlsLioE95akMwR3AKOQmyL6/ezXwh6YZM1m
-c0WhK2hLIefeyTpNAIphInLwBHcUEcEdwDjlJsAzkh2mCcEdwLjlJsCL+eAxJQjuAI5DnurgmQ8e
-hZcK7usKw88S3AGMRZ4CfMPMViQt9xiLHphozWazpDCufFnSaqVSWcg6TQCKLU9F9Ixkh0IiuAPI
-Qm5y8IxkhyIiuAPISp5y8EChENwBZIkAD4xBV3BfJrgDOG65KaIHiqLZbJYVunbOKLSUX806TQCm
-DwEeGKEY3DcUxnQguAPIDEX0wIgQ3AHkCQEeGAGCO4C8oYgeOCKCOzBmd9pb5HqrTI/KdaWkeyQt
-6HwYFA29kYMHjqDZbNYUgrsU5nInuAOjdKf9J7lul/QUuZ4h6WpJVUn36oLNZJ28PCPAA4fUbDbn
-tTMR0mylUmllnSagUO6018j1HZKe1GPr1ZJWsk5invUM8HHq1nkzWzOzi6npWzfjlK7lrBMOZCkG
-9xWF4ZUJ7sA4uN6qWJXcfkhavUvqPLrrFS/WBaYT72dPHbyZLUqqSWpIWpW0EIeRlZnNKAzcMR8n
-gll2d37YMFUI7sDxuPsBfdMHNqX1j4cAn5i/KT4wPa5bnBkZ++jVyK7l7su9XhxneWtLWo8BnvoP
-TBWCOzBeZlZTqGOvKTRcVemqENSr10u1F6Ve7Lo86/TmWa8AXzOzdjJlaz8xV8+PG6ZGKri3JM1V
-KhVa8AJdTDajncxfy7V/DjuWDFe1E9QT7X9U0u++/2f0z8/M9OnxZXp/1tebZ73etJKkLTNblbSU
-FM8D06zZbK5ImlcI7rOVSoX/F0CKyUqS3i7ph7UTW75msne7/I27XhvacSUBPd2mqxGX9e1M5p32
-Fbl+Urvj1SVJD8j1M1lfd57tCfDuPmdmVUmL2gn0ywR6TCuCOzCUd0l6VY/1bzCZZHqvdoJ6ksPv
-SFrXTlDf+3/rFv9fdMF+TdKvSnq+TA9L+l3d4m/L+oLzzty9/0azeYVAv6uu3d0t64Qf+ELNbpN0
-zt1fknVaMDkI7sBgJitLulvSldsrk9DdkrQm15eUxI12ssXd17NO+9jfG7O6pIa7N4773H1Hsks1
-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" style="background:none; border:none; box-shadow:none; height:90%;" />
+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" style="background:none; border:none; box-shadow:none; height: 600px;" />
 </p>
 </div>
 
 </section>
 </section>
 <section>
-<section id="slide-orgheadline54">
-<h2 id="orgheadline54">Study 4</h2>
+<section id="slide-orgheadline53">
+<h2 id="orgheadline53">Study 4</h2>
+<aside class="notes">
+<ul>
+<li>Is a methods paper.</li>
+<li>use approximate Baysian computations for calibrating the model for
+study 3.</li>
+<li>Publish methods in study 4</li>
+
+</ul>
+
+</aside>
+
 <p>
 <b>Calibration of a prostate cancer natural history microsimulation model
 using approximate Bayesian computation.</b>
@@ -28928,8 +28745,8 @@ using approximate Bayesian computation.</b>
 </section>
 </section>
 <section>
-<section id="slide-orgheadline51">
-<h3 id="orgheadline51">Background</h3>
+<section id="slide-orgheadline50">
+<h3 id="orgheadline50">Background &amp; Aim</h3>
 <ul>
 <li>First two studies the natural history model was calibrated using the
 Nelder-Mead <span style="white-space: nowrap"> algorithm.<font size='4'><sup><A Href="#NelderMead">13</A></sup></font></span></li>
@@ -28937,12 +28754,8 @@ Nelder-Mead <span style="white-space: nowrap"> algorithm.<font size='4'><sup><A 
 a multiplicity of local solutions, which would be better handled by
 a global search algorithm. Preparations to make the simulation scale
 was done in study 1.</li>
-<li>For the calibration as well as for the sensitivity analysis for
-Study 3, we would therefore prefer to use a more sophisticated
-approach to calibration.</li>
-<li>For health economic modelling, the standard for sensitivity analysis
-is to use probabilistic sensitivity analysis, typically by
-independent prior distributions for each parameter.</li>
+<li>We aim to apply Approximate Baysian Computation (ABC) for both
+calibration and sensitivity analysis for Study 3.</li>
 
 </ul>
 
@@ -28952,33 +28765,27 @@ independent prior distributions for each parameter.</li>
 <section id="slide-orgheadline52">
 <h3 id="orgheadline52">Methods</h3>
 <p>
-ABC uses data from the observed marginal distributions to estimate
-parameters and is a generalisation of full Markov chain Monte Carlo
-methods, with fewer requirements on having a full <span style="white-space: nowrap">
-likelihood.<font size='4'><sup><a href="#gourieroux_indirect_inference_1993">14</a></sup></font></span>
+Approximate Bayesian Computation (ABC) uses data from the observed
+marginal distribution for <span style="white-space: nowrap">
+estimation.<font size='4'><sup><a href="#gourieroux_indirect_inference_1993">14</a></sup></font></span>
 </p>
 
 <dl>
 <dt>We will</dt><dd><ul>
-<li>prepare a set of prior distributions for the parameters of
-interest, with uniform distribution for unknown parameters and
-Gaussian distributions for parameters with point estimates from
-the literature;</li>
-<li>calibrate the simulation to the observed data using ABC.</li>
-
-<li>investigate the model sensitivity of selected model predictions
-(e.g. costs and effectiveness) to variation in the model
-parameters.</li>
+<li>prepare objective prior distributions, with uniform distribution
+for unknown parameters and Gaussian distributions for point
+estimates from the literature;</li>
+<li>calibrate the simulation to the observed data using ABC;</li>
+<li>investigate the model sensitivity using the selected model
+predictions</li>
 
 </ul></dd>
 
 </dl>
 
 </section>
-</section>
-<section>
-<section id="slide-orgheadline53">
-<h3 id="orgheadline53">Concern</h3>
+<section id="slide-orgheadline51">
+<h4 id="orgheadline51">Concern</h4>
 <p>
 A potential theoretical concern relates to identifiability: does the
 data provide any information on the parameters of interest? If not,
@@ -28988,11 +28795,12 @@ available in most other countries, which we expect to improve the
 validity of the fitted models.
 </p>
 
+
 </section>
 </section>
 <section>
-<section id="slide-orgheadline57">
-<h2 id="orgheadline57">Study 5</h2>
+<section id="slide-orgheadline56">
+<h2 id="orgheadline56">Study 5</h2>
 <p>
 <b>Develop a browser-based tool for allowing health-care decision makers
 to investigate different prostate cancer screening scenarios</b>
@@ -29000,21 +28808,23 @@ to investigate different prostate cancer screening scenarios</b>
 </section>
 </section>
 <section>
-<section id="slide-orgheadline55">
-<h3 id="orgheadline55">Background &amp; Aim</h3>
+<section id="slide-orgheadline54">
+<h3 id="orgheadline54">Background &amp; Aim</h3>
 <ul>
-<li>There is a need to better inform about the benefits and harms of
-different prostate cancer screening policies.</li>
-<li>We aim to develop a browser-based tool to ease the comparison of
-different approaches to prostate cancer screening.</li>
+<li>There is a need to better inform health-care decision makers about
+the benefits and harms of different prostate cancer screening
+policies.</li>
+<li>As not all public policy planners are R-users. We aim to develop a
+browser-based tool to ease the comparison of different approaches to
+prostate cancer screening.</li>
 
 </ul>
 
 </section>
 </section>
 <section>
-<section id="slide-orgheadline56">
-<h3 id="orgheadline56">Very simple implementation</h3>
+<section id="slide-orgheadline55">
+<h3 id="orgheadline55">Prototype</h3>
 <p><iframe src="https://microsimulation.shinyapps.io/microsimulation/" scrolling="auto" overflow-x: scroll width="1280" height="580"></iframe></p>
 
 
@@ -29022,7 +28832,37 @@ different approaches to prostate cancer screening.</li>
 </section>
 <section>
 <section id="slide-orgheadline59">
-<h2 id="orgheadline59">Discussion</h2>
+<h2 id="orgheadline59">Conclusions</h2>
+<ul>
+<li>Microsimulation is increasingly being used to plan for cancer
+screening, particularly in the context of personalised screening
+(e.g. CISNET, NICE, USPSTF)</li>
+<li>These models are complex and care is required to ensure that they
+are valid</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orgheadline58">
+<h3 id="orgheadline58">Thank you for listening!</h3>
+<p>
+We acknowledge funding support from the Swedish eScience Research
+Centre, the Nordic Information for Action eScience Center and the
+Swedish Cancerfonden (CAN 2012/765).
+</p>
+
+</section>
+<section>
+<div id="tiny">
+
+<h1>Bibliography</h1><ol><li><a name="bray_prostate_2010"></a>Bray, Lortet-Tieulent, Ferlay, Forman & Auvinen, Prostate cancer incidence and mortality trends in 37 European countries: an overview, <i>Eur J Cancer</i>, <b>46(17)</b>, 3040--3052 (2010). <a href="http://www.ncbi.nlm.nih.gov/pubmed/21047585">link</a>. <a href="http://dx.doi.org/10.1016/j.ejca.2010.09.013">doi</a>.</li><li><a name="nordstrom_prostate-specific_2013"></a>Nordström, Aly, Clements, Weibull, Adolfsson & Grönberg, Prostate-specific antigen (PSA) testing is prevalent and increasing in Stockholm County, Sweden, Despite no recommendations for PSA screening: results from a population-based study, 2003-2011, <i>Eur. Urol.</i>, <b>63(3)</b>, 419--425 (2013). <a href="">link</a>. <a href="http://dx.doi.org/">doi</a>.</li><li><a name="tomic_rate_pcbase_2015"></a>Tomic, Berglund, Robinson, Hjalm-Eriksson, Carlsson, Lambe & Stattin, Capture rate and representativity of The National Prostate Cancer Register of Sweden, <i>Acta Oncol</i>, <b>54(2)</b>, 158--163 (2015). <a href="">link</a>. <a href="http://dx.doi.org/">doi</a>.</li><li><a name="schroder_screening_2014"></a>Schröder, Hugosson, Roobol, Tammela, Zappa, Nelen, Kwiatkowski, Lujan, Määttänen, Lilja, Denis, Recker, Paez, Bangma, Carlsson, Puliti, Villers, Rebillard, Hakama, Stenman, Kujala, Taari, Aus, Huber, van der Kwast, van Schaik, de Koning, Moss, Auvinen & ERSPC Investigators, Screening and prostate cancer mortality: results of the European Randomised Study of Screening for Prostate Cancer (ERSPC) at 13 years of follow-up, <i>Lancet</i>, <b>384(9959)</b>, 2027--2035 (2014). <a href="">link</a>. <a href="http://dx.doi.org/10.1016/S0140-6736(14)60525-0">doi</a>.</li><li><a name="andriole_prostate_2012"></a>Andriole, Crawford, Grubb, Buys, Chia, Church, Fouad, Isaacs, Kvale, Reding, Weissfeld, Yokochi, O'Brien, Ragard, Clapp, Rathmell, Riley, Hsing, Izmirlian, Pinsky, Kramer, Miller, Gohagan & Prorok, Prostate cancer screening in the randomized Prostate, Lung, Colorectal, and Ovarian Cancer Screening Trial: mortality results after 13 years of follow-up, <i>J Natl Cancer Inst</i>, <b>104(2)</b>, 125--132 (2012). <a href="http://www.ncbi.nlm.nih.gov/pubmed/22228146">link</a>. <a href="http://dx.doi.org/10.1093/jnci/djr500">doi</a>.</li><li><a name="LEcuyer"></a>L'Ecuyer, Simard, Chen & Kelton, An Object-Oriented Random-Number Package with Many Long Streams and Substreams, <i>Operations Research</i>, <b>50(6)</b>, 1073-1075 (2002). <a href="">link</a>. <a href="http://dx.doi.org/10.1287/opre.50.6.1073.358">doi</a>.</li><li><a name="R_3_1_0_release_notes"></a>Peter Dalgaard, R 3.1.0 is released, (2014). <a href="https://stat.ethz.ch/pipermail/r-announce/2014/000572.html">link</a>. <a href="http://dx.doi.org/">doi</a>. Accessed: 2016-05-03</li><li><a name="gulati_calibrating_2010"></a>Gulati, Inoue, Katcher, Hazelton & Etzioni, Calibrating disease progression models using population data: a critical precursor to policy development in cancer control, <i>Biostatistics</i>, <b>11(4)</b>, 707--719 (2010). <a href="">link</a>. <a href="http://dx.doi.org/">doi</a>.</li><li><a name="etzioni_impact_2008"></a>Etzioni, Gulati, Falcon & Penson, Impact of PSA screening on the incidence of advanced stage prostate cancer in the United States: a surveillance modeling approach, <i>Med Decis Making</i>, <b>28()</b>, 323--31 (2008). <a href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&db=PubMed&dopt=Citation&list_uids=18319508">link</a>. <a href="http://dx.doi.org/">doi</a>.</li><li><a name="microsimulation"></a>Clements & Andreas Karlsson, mclements/microsimulation/sim\_instances, (2015). <a href="https://github.com/mclements/microsimulation/tree/sim_instances">link</a>. <a href="http://dx.doi.org/">doi</a>. </li><li><a name="pataky_is_2014"></a>Pataky, Gulati, Etzioni, Black, Chi, Coldman, Pickles, Tyldesley & Peacock, Is prostate cancer screening cost-effective? A microsimulation model of prostate-specific antigen-based screening for British Columbia, Canada, <i>Int. J. Cancer</i>, <b>135(4)</b>, (). <a href="">link</a>. <a href="http://dx.doi.org/">doi</a>.</li><li><a name="heijnsdijk_cost-effectiveness_2015"></a>Heijnsdijk, de Carvalho, Auvinen, Zappa, Nelen, Kwiatkowski, Villers, Páez, Moss, Tammela, Recker, Denis, Carlsson, Wever, Bangma, Schröder, Roobol, Hugosson & de Koning, Cost-effectiveness of prostate cancer screening: a simulation study based on ERSPC data, <i>Journal of the National Cancer Institute</i>, <b>107(1)</b>, 366 (2015). <a href="">link</a>. <a href="http://dx.doi.org/10.1093/jnci/dju366">doi</a>.</li><li><a name="NelderMead"></a>Nelder & Mead, A Simplex Method for Function Minimization, <i>Computer Journal</i>, <b>7(4)</b>, 308-313 (1965). <a href="http://comjnl.oxfordjournals.org/content/7/4/308">link</a>. <a href="http://dx.doi.org/">doi</a>.</li><li><a name="gourieroux_indirect_inference_1993"></a>Gourieroux, Monfort & Renault, Indirect Inference, <i>Journal of Applied Econometrics</i>, <b>8(3)</b>, S85-S118 (1993). <a href="">link</a>. <a href="http://dx.doi.org/">doi</a>.</li></ol>
+</div>
+
+</section>
+<section id="slide-orgheadline57">
+<h4 id="orgheadline57">Discussion</h4>
 <ul>
 <li>Overall: How can we assess whether a model is sufficiently valid for
 each research question?</li>
@@ -29040,24 +28880,6 @@ considered to be reliable and cost-effective. Does this appraisal
 have any implications for S3M?</li>
 
 </ul>
-
-</section>
-</section>
-<section>
-<section id="slide-orgheadline58">
-<h3 id="orgheadline58">Thank you for listening!</h3>
-<p>
-We acknowledge funding support from the Swedish eScience Research
-Centre, the Nordic Information for Action eScience Center and the
-Swedish Cancerfonden (CAN 2012/765).
-</p>
-
-</section>
-<section>
-<div id="bibliography">
-
-<h1>Bibliography</h1><ol><li><a name="bray_prostate_2010"></a>Bray, Lortet-Tieulent, Ferlay, Forman & Auvinen, Prostate cancer incidence and mortality trends in 37 European countries: an overview, <i>Eur J Cancer</i>, <b>46(17)</b>, 3040--3052 (2010). <a href="http://www.ncbi.nlm.nih.gov/pubmed/21047585">link</a>. <a href="http://dx.doi.org/10.1016/j.ejca.2010.09.013">doi</a>.</li>\cite{}\cite{}<li><a name="schroder_screening_2014"></a>Schröder, Hugosson, Roobol, Tammela, Zappa, Nelen, Kwiatkowski, Lujan, Määttänen, Lilja, Denis, Recker, Paez, Bangma, Carlsson, Puliti, Villers, Rebillard, Hakama, Stenman, Kujala, Taari, Aus, Huber, van der Kwast, van Schaik, de Koning, Moss, Auvinen & ERSPC Investigators, Screening and prostate cancer mortality: results of the European Randomised Study of Screening for Prostate Cancer (ERSPC) at 13 years of follow-up, <i>Lancet</i>, <b>384(9959)</b>, 2027--2035 (2014). <a href="">link</a>. <a href="http://dx.doi.org/10.1016/S0140-6736(14)60525-0">doi</a>.</li><li><a name="andriole_prostate_2012"></a>Andriole, Crawford, Grubb, Buys, Chia, Church, Fouad, Isaacs, Kvale, Reding, Weissfeld, Yokochi, O'Brien, Ragard, Clapp, Rathmell, Riley, Hsing, Izmirlian, Pinsky, Kramer, Miller, Gohagan & Prorok, Prostate cancer screening in the randomized Prostate, Lung, Colorectal, and Ovarian Cancer Screening Trial: mortality results after 13 years of follow-up, <i>J Natl Cancer Inst</i>, <b>104(2)</b>, 125--132 (2012). <a href="http://www.ncbi.nlm.nih.gov/pubmed/22228146">link</a>. <a href="http://dx.doi.org/10.1093/jnci/djr500">doi</a>.</li><li><a name="LEcuyer"></a>L'Ecuyer, Simard, Chen & Kelton, An Object-Oriented Random-Number Package with Many Long Streams and Substreams, <i>Operations Research</i>, <b>50(6)</b>, 1073-1075 (2002). <a href="">link</a>. <a href="http://dx.doi.org/10.1287/opre.50.6.1073.358">doi</a>.</li>\cite{}<li><a name="gulati_calibrating_2010"></a>Gulati, Inoue, Katcher, Hazelton & Etzioni, Calibrating disease progression models using population data: a critical precursor to policy development in cancer control, <i>Biostatistics</i>, <b>11(4)</b>, 707--719 (2010). <a href="">link</a>. <a href="http://dx.doi.org/">doi</a>.</li><li><a name="etzioni_impact_2008"></a>Etzioni, Gulati, Falcon & Penson, Impact of PSA screening on the incidence of advanced stage prostate cancer in the United States: a surveillance modeling approach, <i>Med Decis Making</i>, <b>28()</b>, 323--31 (2008). <a href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&db=PubMed&dopt=Citation&list_uids=18319508">link</a>. <a href="http://dx.doi.org/">doi</a>.</li>\cite{}<li><a name="heijnsdijk_cost-effectiveness_2015"></a>Heijnsdijk, de Carvalho, Auvinen, Zappa, Nelen, Kwiatkowski, Villers, Páez, Moss, Tammela, Recker, Denis, Carlsson, Wever, Bangma, Schröder, Roobol, Hugosson & de Koning, Cost-effectiveness of prostate cancer screening: a simulation study based on ERSPC data, <i>Journal of the National Cancer Institute</i>, <b>107(1)</b>, 366 (2015). <a href="">link</a>. <a href="http://dx.doi.org/10.1093/jnci/dju366">doi</a>.</li><li><a name="gronberg_STHLM3_2015"></a>Henrik Grönberg, Jan Adolfsson, Markus Aly, Tobias Nordström, Peter Wiklund, Yvonne Brandberg, James Thompson, Fredrik Wiklund, Johan Lindberg, Mark Clements, Lars Egevad & Martin Eklund, Prostate cancer screening in men aged 50--69 years (STHLM3): a prospective population-based diagnostic study, <i>The Lancet Oncology </i>, <b>16(16)</b>, 1667 - 1676 (2015). <a href="http://www.sciencedirect.com/science/article/pii/S1470204515003617">link</a>. <a href="http://dx.doi.org/http://dx.doi.org/10.1016/S1470-2045(15)00361-7">doi</a>.</li>\cite{}<li><a name="gourieroux_indirect_inference_1993"></a>Gourieroux, Monfort & Renault, Indirect Inference, <i>Journal of Applied Econometrics</i>, <b>8()</b>, S85-S118 (1993). <a href="">link</a>. <a href="http://dx.doi.org/">doi</a>.</li></ol>
-</div>
 </section>
 </section>
 </div>
@@ -33827,7 +33649,7 @@ controls: false,
 progress: true,
 history: true,
 center: true,
-slideNumber: 'h/v',
+slideNumber: 'h.v/t',
 rollingLinks: true,
 keyboard: true,
 overview: true,
